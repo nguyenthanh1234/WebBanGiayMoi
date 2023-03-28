@@ -12,6 +12,7 @@ using WebBanGiayMoi.Models;
 //Hello
 //Thanh push lần 2
 //Thanh đã chỉnh sửa ở đây
+//hi
 namespace WebBanGiayMoi.Controllers
 {
     [Authorize]
