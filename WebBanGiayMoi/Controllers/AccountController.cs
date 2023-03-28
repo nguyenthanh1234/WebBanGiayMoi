@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebBanGiayMoi.Models;
-
+//Thanh đã chỉnh sửa ở đây
 namespace WebBanGiayMoi.Controllers
 {
     [Authorize]
