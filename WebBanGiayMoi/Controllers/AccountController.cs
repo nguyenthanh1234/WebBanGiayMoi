@@ -193,7 +193,7 @@ namespace WebBanGiayMoi.Controllers
             return View();
         }
 
-        //
+        //hello
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
