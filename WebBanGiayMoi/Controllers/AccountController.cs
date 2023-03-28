@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebBanGiayMoi.Models;
+//Thanh push lần 2
 //Thanh đã chỉnh sửa ở đây
 namespace WebBanGiayMoi.Controllers
 {
