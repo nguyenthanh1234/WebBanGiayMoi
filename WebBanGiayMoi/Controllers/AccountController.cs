@@ -10,10 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebBanGiayMoi.Helper;
 using WebBanGiayMoi.Models;
-//Hello
-//Thanh push lần 2
-//Thanh đã chỉnh sửa ở đây
-//hi
+
 namespace WebBanGiayMoi.Controllers
 {
     [Authorize]
@@ -90,7 +87,14 @@ namespace WebBanGiayMoi.Controllers
                         return View("NotificationEmailConfirm");
                     }
                     else
+                    {
+                        ApplicationUser userCurrent = UserManager.FindByName(model.Email);
+                        if (UserManager.IsInRole(userCurrent.Id, "Admin"))
+                        {
+                            return RedirectToAction("index", "home", new { Area = "Admin" });
+                        }
                         return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
