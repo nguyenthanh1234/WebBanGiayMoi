@@ -3,7 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Images/faviconweb.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <title>@ViewBag.Title - Giày Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,28 +22,89 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="~/home/index">
+                    <img src="~/Content/images/logo.png" width="170px">
+                </a>
+                @*   @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <Li>@Html.ActionLink("Sản phẩm", "SanPham", "Home") </Li>
+                    <li>@Html.ActionLink("Về chúng tôi", "About", "Home")</li>
+                    <li>@Html.ActionLink("Liên hệ", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <a href="/ShoppingCart/ShowtoCart"> <img src="~/Content/images/cart.png" width="25px" height="25px" style="margin-top:10px" /> </a>
+                    @Html.Action("BagCart", "ShoppingCart")
+                </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer style="background: #222; color: #fff">
+            <!--Start of Tawk.to Script-->
+            <script type="text/javascript">
+                var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+                (function () {
+                    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                    s1.async = true;
+                    s1.src = 'https://embed.tawk.to/641886da4247f20fefe6f9df/1grvsthcb';
+                    s1.charset = 'UTF-8';
+                    s1.setAttribute('crossorigin', '*');
+                    s0.parentNode.insertBefore(s1, s0);
+                })();
+            </script>
+            <!--End of Tawk.to Script-->
+            <div id="goi-dien">
+                <button class="btn btn-danger"><a href="tel:0368151672" style="color:#fff">Gọi: 036.815.1672</a></button>
+            </div>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Thông tin liên hệ</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <p>Số điện thoại: 036.815.1672</p>
+                        <p>Email: giaypro@gmail.com</p>
+                        <p>Địa chỉ: Quốc lộ 1A, Hồ Chí Minh</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Về chúng tôi</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <p>
+                            Chuyên cung cấp các loại giày mới nhất <br>
+                            giá tốt, chất lượng và đẹp mắt đến người dùng.
+                        </p>
+
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Danh mục</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <a href="/home/contact/" target="_blank">Liên hệ</a> <br>
+                        <a href="/home/about/" target="_blank">Về chúng tôi</a> <br>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Theo dõi chúng tôi</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <a href="https://www.facebook.com/fbthanhkhanhhoa" target="_blank">Facebook</a> <br>
+                        <a href="https://www.youtube.com/channel/UCQm-DRvVj4wVZ63biHoPljw" target="_blank">Youtube</a> <br>
+                        <a href="https://www.twitter.com/quecuatoi" target="_blank">Twitter</a>
+                    </div>
+                </div>
+                <hr> <!--Tao chan Footer-->
+                <p class="copyright">Copyright 2023 - Giày Pro</p>
+                <!--End - Footer-->
+            </div>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("upload", required: false)
 </body>
 </html>

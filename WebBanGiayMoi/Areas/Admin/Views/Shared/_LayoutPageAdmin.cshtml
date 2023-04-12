@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>@ViewBag.Title - Giày Pro</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,28 +19,86 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="~/home/index">
+                    <img src="~/Content/images/logo.png" width="170px">
+                </a>
+                @*   @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Quản lý sản phẩm", "index", "Product")</li>
-                    <li>@Html.ActionLink("Quản lý bài viết", "index", "Post")</li>
+                    <li>@Html.ActionLink("Trang chủ", "index", "Home")</li>
+                    <li>@Html.ActionLink("QL sản phẩm", "index", "Product")</li>
+                    <li>@Html.ActionLink("QL category", "Index", "Category")</li>
+                    <li>@Html.ActionLink("QL brand", "Index", "Brand")</li>
+                    <li>@Html.ActionLink("QL hóa đơn", "Index", "OrderDetails")</li>
+
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer style="background: #222; color: #fff">
+            <!--Start of Tawk.to Script-->
+            <script type="text/javascript">
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/641886da4247f20fefe6f9df/1grvsthcb';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+                })();
+            </script>
+            <!--End of Tawk.to Script-->
+            <div id="goi-dien">
+                <button class="btn btn-danger"><a href="tel:0368151672" style="color:#fff">Gọi: 036.815.1672</a></button>
+            </div>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Thông tin liên hệ</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <p>Số điện thoại: 036.815.1672</p>
+                        <p>Email: giaypro@gmail.com</p>
+                        <p>Địa chỉ: Quốc lộ 1A, Hồ Chí Minh</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Về chúng tôi</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <p>
+                            Chuyên cung cấp các loại giày mới nhất <br>
+                            giá tốt, chất lượng và đẹp mắt đến người dùng.
+                        </p>
+
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Danh mục</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <a href="/home/contact/" target="_blank">Liên hệ</a> <br>
+                        <a href="/home/about/" target="_blank">Về chúng tôi</a> <br>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h3>Theo dõi chúng tôi</h3>
+                        <p style="color:#404040;margin:-10px 0 20px 0">___________________</p>
+                        <a href="https://www.facebook.com/fbthanhkhanhhoa" target="_blank">Facebook</a> <br>
+                        <a href="https://www.youtube.com/channel/UCQm-DRvVj4wVZ63biHoPljw" target="_blank">Youtube</a> <br>
+                        <a href="https://www.twitter.com/quecuatoi" target="_blank">Twitter</a>
+                    </div>
+                </div>
+                <hr> <!--Tao chan Footer-->
+                <p class="copyright">Copyright 2023 - Giày Pro</p>
+                <!--End - Footer-->
+            </div>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("upload", required: false)
 </body>
 </html>

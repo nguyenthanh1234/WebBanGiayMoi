@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebBanGiayMoi.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = Session["Profile"] as WebBanGiayMoi.Models.ApplicationUser;
+}
+
+<h2 style="margin:30px 0 15px 0">Hóa đơn của bạn</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.ApplicationUser.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Giay.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.Descriptions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPriceSale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantitySale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.OrderDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (User.Id == item.Order.ApplicationUserId)
+        {
+            <tr>
+                <td>
+                    @User.Name
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Giay.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.Descriptions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPriceSale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantitySale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.OrderDate)
+                </td>
+            </tr>
+        }
+    }
+
+</table>

@@ -28,3 +28,16 @@ textarea {
     background-color: #777;
     border-color: #fff
 }
+
+/*Css - gọi điện*/
+#goi-dien {
+    position: fixed;
+    z-index: 9999;
+    bottom: 30px;
+    left: 10px;
+}
+
+/*CSS thương hiệu*/
+
+/*End - css thương hiệu*/
+

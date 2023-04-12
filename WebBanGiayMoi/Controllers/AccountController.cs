@@ -1,15 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
+using System.EnterpriseServices;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Provider;
 using WebBanGiayMoi.Helper;
 using WebBanGiayMoi.Models;
+using WebBanGiayMoi;
 
 namespace WebBanGiayMoi.Controllers
 {
@@ -18,26 +26,72 @@ namespace WebBanGiayMoi.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
 
+        //Show myprofile
+        public ActionResult MyProfile()
+        {
+            if (Session["Profile"] == null)
+            {
+                return View("Login");
+            }
+            return View();
+        }
+
+        public ActionResult EditProfile()
+        {
+            if (Session["Profile"] == null)
+            {
+                return View("Login");
+            }
+            var user = Session["Profile"] as ApplicationUser;
+            var userCanSua = UserManager.Users.FirstOrDefault(s => s.Id == user.Id);
+            return View(userCanSua);
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(ApplicationUser userDaSua)
+        {
+            var listUser = UserManager.Users.ToList();
+            foreach (var user in listUser)
+            {
+                if (user.Id == userDaSua.Id)
+                {
+                    user.Name = userDaSua.Name;
+                    user.Phone = userDaSua.Phone;
+                    user.Address = userDaSua.Address;
+                    var s = Session["Profile"] as ApplicationUser;
+                    s.Name = user.Name;
+                    s.Phone = user.Phone;
+                    s.Address = user.Address;
+                    db.Users.AddOrUpdate(user);
+                    db.SaveChanges();
+                    return RedirectToAction("MyProfile", "Account");
+                }
+            }
+            return View("index", "home");
+
+            //Sau khi edit xong gắn dữ liệu mới cho sesion
+
+        }
         public ApplicationSignInManager SignInManager
         {
             get
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -89,11 +143,18 @@ namespace WebBanGiayMoi.Controllers
                     else
                     {
                         ApplicationUser userCurrent = UserManager.FindByName(model.Email);
+
+                        Session["Profile"] = userCurrent;
+                        //Viết thêm phần lấy user từ data thông qua biến model nhận email
+                        //Lưu thông tin user vừa lấy lên vào session 
                         if (UserManager.IsInRole(userCurrent.Id, "Admin"))
                         {
                             return RedirectToAction("index", "home", new { Area = "Admin" });
                         }
-                        return RedirectToLocal(returnUrl);
+                        else
+                        {
+                            return RedirectToLocal(returnUrl);
+                        }
                     }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -135,7 +196,7 @@ namespace WebBanGiayMoi.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -166,7 +227,7 @@ namespace WebBanGiayMoi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Phone = model.Phone, Address = model.Address };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -209,7 +270,7 @@ namespace WebBanGiayMoi.Controllers
             return View();
         }
 
-        //hello
+        //
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -229,7 +290,8 @@ namespace WebBanGiayMoi.Controllers
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                SendMail.SendEmail(user.Email, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>","");
+                //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                SendMail.SendEmail(user.Email, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>", "");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -407,6 +469,7 @@ namespace WebBanGiayMoi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session.Clear();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

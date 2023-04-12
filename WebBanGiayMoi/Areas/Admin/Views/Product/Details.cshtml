@@ -1,0 +1,27 @@
+﻿@model WebBanGiayMoi.Models.Giay
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPageAdmin.cshtml";}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="thumbnail">
+            <img src="@Html.DisplayFor(model=>model.Hinh)" alt="thumbnail" width="500px">
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="caption">
+            <h3>@Html.DisplayFor(model => model.Name)</h3>
+            <p>Giá: <strong style="color:red;font-size:28px"> @Html.DisplayFor(model => model.Gia)vnđ</strong></p>
+            <p>Mô tả: @Html.DisplayFor(model => model.Description)</p>
+            <p>Số lượng tồn: @Html.DisplayFor(model => model.SoLuong)</p>
+            <p>
+                @Html.ActionLink("Back", "Index", "", new { @class = "btn btn-info" })
+            </p>
+        </div>
+    </div>
+</div>
+<h2>Chi tiết</h2>
+@Html.DisplayFor(model => model.Content)
+

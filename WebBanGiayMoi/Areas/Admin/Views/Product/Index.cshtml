@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebBanGiayMoi.Models.Giay>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    <strong>@item.Name</strong>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Mô tả: </strong>@item.Description</p>
+                    <p><strong>Giá: </strong>@item.Gia</p>
+                    <p><img src="@item.Hinh" width="100%"></p>
+                    @*<p><strong>Còn lại: </strong>@item.soluongton</p>
+                        <p><strong>Ngày cập nhật: </strong>@item.ngaycapnhat</p>*@
+                </div>
+                <div class="panel-footer clearfix">
+                    <div class="pull-right">
+                        @Html.ActionLink("Read more...", "Details", "Product", new
+                        {
+                            id = item.Id
+                        }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new
+                        { @class = "btn btn-success" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new
+                        {
+                        @class = "btn btn-success"
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

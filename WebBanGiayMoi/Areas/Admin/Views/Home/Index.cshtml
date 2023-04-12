@@ -1,8 +1,11 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Trang quản trị Admin";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-
-<h2>Index</h2>
+<h1>@ViewBag.Title</h1>
+<center><img src="~/Content/images/admin.png" width="500px" /></center>
+<a href="/admin/product/index" class="btn btn-success">Quản lý sản phẩm</a>
+<a href="/admin/brand/index" class="btn btn-success">Quản lý thương hiệu</a>
+<a href="/admin/category/index" class="btn btn-success">Quản lý danh mục</a>
+<a href="/admin/orderdetails/index" class="btn btn-success">Quản lý hóa đơn</a>
 
