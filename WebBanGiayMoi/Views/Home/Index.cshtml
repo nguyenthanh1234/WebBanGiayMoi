@@ -1,31 +1,411 @@
-﻿@{
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<WebBanGiayMoi.Models.Giay>
+@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
+<!--Banner-->
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <img src="~/Content/images/banner.jpg" width="100%" />
+</div>
+<!--End - Banner-->
+<!--Danh mục sản phẩm-->
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Danh mục sản phẩm</b></u></h3>
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <img src="~/Content/images/danh-muc-1.jpg" width="100%" alt="Hinh-anh-danh-muc" />
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <img src="~/Content/images/danh-muc-2.jpg" width="100%" alt="Hinh-anh-danh-muc" />
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <img src="~/Content/images/danh-muc-3.jpg" width="100%" alt="Hinh-anh-danh-muc" />
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <img src="~/Content/images/danh-muc-4.jpg" width="100%" alt="Hinh-anh-danh-muc" />
     </div>
 </div>
+<!--End - Danh mục sản phẩm-->
+<!--Tìm kiếm-->
+<div class="row">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" }))
+    {
+        <div class="form-group form-inline" style="display: flex; margin-top:30px">
+            <input type="Text" class="form-control col-md-10" value="@ViewBag.Keyword"
+                   name="searchString" placeholder="Nhập tên giày cần tìm">
+
+            <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left:10px;">
+        </div>
+        <br>
+    }
+</div>
+<!--Kết thúc - tìm kiếm-->
+<!--Sản phẩm-->
+<h3 style="margin-bottom:30px;margin-top:20px;text-align:center"><u><b>Sản phẩm mới</b></u></h3>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    <strong>@item.Name</strong>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Mô tả: </strong>@item.Description</p>
+                    <p><strong>Giá: </strong>@item.Gia</p>
+                    <img src="@item.Hinh" width="100%" />
+                </div>
+                <div class="panel-footer clearfix">
+                    <div class="pull-right">
+                        @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new
+                   {
+                       id = item.Id
+                   }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Đọc thêm...", "Detail", new
+                        {
+                            id = item.Id
+                        }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+        @Model.PageCount
+    </div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+<style type="text/css">
+    #mau-nut a {
+        clear: both;
+        background-color: orange;
+        color: snow;
+    }
+
+        #mau-nut a:hover {
+            background-color: darkcyan;
+            color: snow;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxLength = 100;
+        $(".show-read-more").each(function () {
+            var myStr = $(this).text();
+            if ($.trim(myStr).length > maxLength) {
+                var newStr = myStr.substring(0, maxLength);
+                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                $(this).empty().html(newStr);
+                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a > ');
+                $(this).append('<span class="more-text">' + removedStr + '</span>');
+            }
+        });
+        $(".read-more").click(function () {
+            $(this).siblings(".more-text").contents().unwrap();
+            $(this).remove();
+        });
+    });
+</script>
+<style>
+    .show-read-more .more-text {
+        display: none;
+    }
+</style>
+<!--End - Sản phẩm-->
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày nữ</b></u></h3>
+<!--Sản phẩm-->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (item.CategoryId == 1)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">
+                        <strong>@item.Name</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Mô tả: </strong>@item.Description</p>
+                        <p><strong>Giá: </strong>@item.Gia</p>
+                        <img src="@item.Hinh" width="100%" />
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new
+                     {
+                         id = item.Id
+                     }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Đọc thêm...", "Detail", new
+                            {
+                                id = item.Id
+                            }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+<div>
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+        @Model.PageCount
+    </div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+<style type="text/css">
+    #mau-nut a {
+        clear: both;
+        background-color: orange;
+        color: snow;
+    }
+
+        #mau-nut a:hover {
+            background-color: darkcyan;
+            color: snow;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxLength = 100;
+        $(".show-read-more").each(function () {
+            var myStr = $(this).text();
+            if ($.trim(myStr).length > maxLength) {
+                var newStr = myStr.substring(0, maxLength);
+                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                $(this).empty().html(newStr);
+                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a > ');
+                $(this).append('<span class="more-text">' + removedStr + '</span>');
+            }
+        });
+        $(".read-more").click(function () {
+            $(this).siblings(".more-text").contents().unwrap();
+            $(this).remove();
+        });
+    });
+</script>
+<style>
+    .show-read-more .more-text {
+        display: none;
+    }
+</style>
+<!--End - Sản phẩm-->
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày nam</b></u></h3>
+<!--Sản phẩm-->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (item.CategoryId == 2)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">
+                        <strong>@item.Name</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Mô tả: </strong>@item.Description</p>
+                        <p><strong>Giá: </strong>@item.Gia</p>
+                        <img src="@item.Hinh" width="100%" />
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new
+                     {
+                         id = item.Id
+                     }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Đọc thêm...", "Detail", new
+                            {
+                                id = item.Id
+                            }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+<div>
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+        @Model.PageCount
+    </div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+<style type="text/css">
+    #mau-nut a {
+        clear: both;
+        background-color: orange;
+        color: snow;
+    }
+
+        #mau-nut a:hover {
+            background-color: darkcyan;
+            color: snow;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxLength = 100;
+        $(".show-read-more").each(function () {
+            var myStr = $(this).text();
+            if ($.trim(myStr).length > maxLength) {
+                var newStr = myStr.substring(0, maxLength);
+                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                $(this).empty().html(newStr);
+                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a > ');
+                $(this).append('<span class="more-text">' + removedStr + '</span>');
+            }
+        });
+        $(".read-more").click(function () {
+            $(this).siblings(".more-text").contents().unwrap();
+            $(this).remove();
+        });
+    });
+</script>
+<style>
+    .show-read-more .more-text {
+        display: none;
+    }
+</style>
+<!--End - Sản phẩm-->
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày trẻ em</b></u></h3>
+<!--Sản phẩm-->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (item.CategoryId == 3)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">
+                        <strong>@item.Name</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Mô tả: </strong>@item.Description</p>
+                        <p><strong>Giá: </strong>@item.Gia</p>
+                        <img src="@item.Hinh" width="100%" />
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new
+                   {
+                       id = item.Id
+                   }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Đọc thêm...", "Detail", new
+                            {
+                                id = item.Id
+                            }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+<div>
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+        @Model.PageCount
+    </div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+<style type="text/css">
+    #mau-nut a {
+        clear: both;
+        background-color: orange;
+        color: snow;
+    }
+
+        #mau-nut a:hover {
+            background-color: darkcyan;
+            color: snow;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxLength = 100;
+        $(".show-read-more").each(function () {
+            var myStr = $(this).text();
+            if ($.trim(myStr).length > maxLength) {
+                var newStr = myStr.substring(0, maxLength);
+                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                $(this).empty().html(newStr);
+                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a > ');
+                $(this).append('<span class="more-text">' + removedStr + '</span>');
+            }
+        });
+        $(".read-more").click(function () {
+            $(this).siblings(".more-text").contents().unwrap();
+            $(this).remove();
+        });
+    });
+</script>
+<style>
+    .show-read-more .more-text {
+        display: none;
+    }
+</style>
+<!--End - Sản phẩm-->
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Tin tức</b></u></h3>
+<!--Thương hiệu-->
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Thương hiệu</b></u></h3>
+<div class="brands">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                <img src="~/Content/images/brand-1.png" alt="Anh-Thuong-Hieu" width="100%" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                <img src="~/Content/images/brand-2.png" alt="Anh-Thuong-Hieu" width="100%" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                <img src="~/Content/images/brand-3.png" alt="Anh-Thuong-Hieu" width="100%" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                <img src="~/Content/images/brand-4.png" alt="Anh-Thuong-Hieu" width="100%" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                <img src="~/Content/images/brand-5.png" alt="Anh-Thuong-Hieu" width="100%" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                <img src="~/Content/images/brand-6.png" alt="Anh-Thuong-Hieu" width="100%" />
+            </div>
+        </div>
+    </div>
+</div>
+<!--End - Thương hiệu-->

@@ -1,0 +1,71 @@
+﻿@model WebBanGiayMoi.Models.Cart
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xem giỏ hàng</h2>
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sum</th>
+                <th>Xóa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double total = Convert.ToDouble(item._shopping_product.Gia * item._shopping_quantity);
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item._shopping_product.Name)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item._shopping_product.Hinh)" style="width:100px; height:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item._shopping_product.Gia)
+                    </td>
+                    <td>
+
+                        @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
+                        {
+                            <input type="hidden" value="@item._shopping_product.Id" name="Id_Product" />
+                            <input type="number" value="@item._shopping_quantity" name="Quantity" />
+                            <input type="submit" value="Update Quantity" />
+                        }
+
+                    </td>
+                    <td>
+                        Total: @total
+                    </td>
+                    <td>
+                        <a href="/ShoppingCart/RemoveCart/@item._shopping_product.Id">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="10" style="text-align:right; font-size:18px; color:red">Tổng tất cả: @Model.Total_Money()</td>
+            </tr>
+            @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+            {
+                <tr>
+                    <td colspan="10" style="text-align:right; font-size:18px; color:red; border-top:none">
+                        <input type="submit" value="Đặt hàng" class="btn btn-success" />
+                    </td>
+                </tr>
+            }
+        </tfoot>
+    </table>
+    <a href="/home/index" class="btn btn-primary">Tiếp tục mua sắm</a>
+}
+

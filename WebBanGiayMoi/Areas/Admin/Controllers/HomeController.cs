@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebBanGiayMoi.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         // GET: Admin/Home
@@ -14,5 +14,6 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         {
             return View();
         }
+
     }
 }
