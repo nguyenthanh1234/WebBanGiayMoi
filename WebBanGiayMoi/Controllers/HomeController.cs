@@ -22,7 +22,9 @@ namespace WebBanGiayMoi.Controllers
             if (page == null)
                 page = 1;
             int pageSize = 4;
+            ViewBag.Hienthi = db.blog.ToList();
             return View(Giay.GetAll(searchString).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
+            
         }
         public ActionResult SanPham(int? page, string searchString)
         {
@@ -60,6 +62,18 @@ namespace WebBanGiayMoi.Controllers
             }
             var orderDetails = db.OrderDetails.Include(o => o.Giay).Include(o => o.Order);
             return View(orderDetails.OrderByDescending(s => s.Id).ToList());
+        }
+        public ActionResult News(int? page)
+        {
+            if (page == null)
+                page = 1;
+            int pageSize = 4;
+            return View(db.blog.ToList().ToPagedList(page.Value, pageSize));
+        }
+        public ActionResult DetailNews(int id)
+        {
+            News baiviettaivitri = db.blog.ToList().Find(x => x.ID == id);
+            return View(baiviettaivitri);
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿@model WebBanGiayMoi.Models.News
+
+@{
+    ViewBag.Title = "DetailNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <h3>@Html.DisplayFor(model => model.Title)</h3>
+
+        <div class="thumbnail" style="border:none">
+            <img src="@Html.DisplayFor(model=>model.Image)" alt="thumbnail" width="1000px" >
+        </div>
+           
+            <p> @Html.Raw(Model.Content)</p>
+           
+                @Html.ActionLink("Back", "Index", "", new { @class = "btn btn-info" })
+            </p>
+        </div>
+
+

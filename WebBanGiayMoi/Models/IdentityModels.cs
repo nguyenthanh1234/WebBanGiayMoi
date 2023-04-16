@@ -36,9 +36,12 @@ namespace WebBanGiayMoi.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Giay> Giays { get; set; }
+        public virtual DbSet<News> blog { get; set; }
+        public virtual DbSet<Topic> Topics { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()

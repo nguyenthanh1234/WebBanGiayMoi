@@ -2,6 +2,7 @@
 @model PagedList.IPagedList<WebBanGiayMoi.Models.Giay>
 @{
     ViewBag.Title = "Home Page";
+    IEnumerable<WebBanGiayMoi.Models.News> baiviet = ViewBag.Hienthi as IEnumerable<WebBanGiayMoi.Models.News>;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!--Banner-->
@@ -382,6 +383,34 @@
 </style>
 <!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Tin tức</b></u></h3>
+<!-- - Tin tức-->
+<div class="row">
+    @foreach (var item in baiviet)
+    {
+        
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">
+                        <strong>@item.Title</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Mô tả: </strong>@item.ShortContent</p>
+                        <img src="@item.Image" width="100%" />
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            
+                            @Html.ActionLink("Đọc thêm...", "DetailNews", new
+                            {
+                                id = item.ID
+                            }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+    }
+    
+</div>
 <!--Thương hiệu-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Thương hiệu</b></u></h3>
 <div class="brands">
