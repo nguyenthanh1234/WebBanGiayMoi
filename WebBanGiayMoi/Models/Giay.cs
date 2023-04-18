@@ -18,8 +18,8 @@ namespace WebBanGiayMoi.Models
         public string Description { get; set; }
         [Display(Name = "Giá")]
         public int Gia { get; set; }
-        [Display(Name = "Số lượng")]
-        public int SoLuong { get; set; }
+        //[Display(Name = "Số lượng")]
+        //public int SoLuong { get; set; }
         [Display(Name = "Ảnh đại diện")]
         public string Hinh { get; set; }
         [Display(Name = "Nội dung")]

@@ -158,57 +158,6 @@
         }
     }
 </div>
-<div>
-    <div>
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
-        @Model.PageCount
-    </div>
-    <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
-    </div>
-</div>
-<style>
-    .MenuTrang li {
-        display: inline;
-    }
-</style>
-<style type="text/css">
-    #mau-nut a {
-        clear: both;
-        background-color: orange;
-        color: snow;
-    }
-
-        #mau-nut a:hover {
-            background-color: darkcyan;
-            color: snow;
-        }
-</style>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var maxLength = 100;
-        $(".show-read-more").each(function () {
-            var myStr = $(this).text();
-            if ($.trim(myStr).length > maxLength) {
-                var newStr = myStr.substring(0, maxLength);
-                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
-                $(this).empty().html(newStr);
-                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a > ');
-                $(this).append('<span class="more-text">' + removedStr + '</span>');
-            }
-        });
-        $(".read-more").click(function () {
-            $(this).siblings(".more-text").contents().unwrap();
-            $(this).remove();
-        });
-    });
-</script>
-<style>
-    .show-read-more .more-text {
-        display: none;
-    }
-</style>
 <!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày nam</b></u></h3>
 <!--Sản phẩm-->
@@ -244,57 +193,6 @@
         }
     }
 </div>
-<div>
-    <div>
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
-        @Model.PageCount
-    </div>
-    <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
-    </div>
-</div>
-<style>
-    .MenuTrang li {
-        display: inline;
-    }
-</style>
-<style type="text/css">
-    #mau-nut a {
-        clear: both;
-        background-color: orange;
-        color: snow;
-    }
-
-        #mau-nut a:hover {
-            background-color: darkcyan;
-            color: snow;
-        }
-</style>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var maxLength = 100;
-        $(".show-read-more").each(function () {
-            var myStr = $(this).text();
-            if ($.trim(myStr).length > maxLength) {
-                var newStr = myStr.substring(0, maxLength);
-                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
-                $(this).empty().html(newStr);
-                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a > ');
-                $(this).append('<span class="more-text">' + removedStr + '</span>');
-            }
-        });
-        $(".read-more").click(function () {
-            $(this).siblings(".more-text").contents().unwrap();
-            $(this).remove();
-        });
-    });
-</script>
-<style>
-    .show-read-more .more-text {
-        display: none;
-    }
-</style>
 <!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày trẻ em</b></u></h3>
 <!--Sản phẩm-->
@@ -330,57 +228,6 @@
         }
     }
 </div>
-<div>
-    <div>
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
-        @Model.PageCount
-    </div>
-    <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
-    </div>
-</div>
-<style>
-    .MenuTrang li {
-        display: inline;
-    }
-</style>
-<style type="text/css">
-    #mau-nut a {
-        clear: both;
-        background-color: orange;
-        color: snow;
-    }
-
-        #mau-nut a:hover {
-            background-color: darkcyan;
-            color: snow;
-        }
-</style>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var maxLength = 100;
-        $(".show-read-more").each(function () {
-            var myStr = $(this).text();
-            if ($.trim(myStr).length > maxLength) {
-                var newStr = myStr.substring(0, maxLength);
-                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
-                $(this).empty().html(newStr);
-                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a > ');
-                $(this).append('<span class="more-text">' + removedStr + '</span>');
-            }
-        });
-        $(".read-more").click(function () {
-            $(this).siblings(".more-text").contents().unwrap();
-            $(this).remove();
-        });
-    });
-</script>
-<style>
-    .show-read-more .more-text {
-        display: none;
-    }
-</style>
 <!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Tin tức</b></u></h3>
 <!-- - Tin tức-->

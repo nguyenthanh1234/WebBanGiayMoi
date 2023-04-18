@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "ShowToCart";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    WebBanGiayMoi.Models.ApplicationUser user = Session["Profile"] as WebBanGiayMoi.Models.ApplicationUser;
 }
 
 <h2>Xem giỏ hàng</h2>
@@ -54,12 +55,20 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="10" style="text-align:right; font-size:18px; color:red">Tổng tất cả: @Model.Total_Money()</td>
+                <td colspan="10" style="text-align:right; font-size:18px; color:red; ">Tổng tất cả: @Model.Total_Money()</td>
+            </tr>    
+            <tr>
+                <td  style="text-align: left; font-size: 16px"><b>Thông tin khách hàng: </b></td>
+                <td    style="text-align:left;font-size: 16px">@user.Name</td>
+                <td  style="text-align:left;font-size: 16px">@user.Phone</td>
+                <td colspan="2" style="text-align:left;font-size: 16px">@user.Address</td>
+                <td  style="text-align:right;font-size: 16px">@Html.ActionLink("Sửa", "EditProfile", "Account")</td>
             </tr>
             @using (Html.BeginForm("CheckOut", "ShoppingCart"))
             {
                 <tr>
-                    <td colspan="10" style="text-align:right; font-size:18px; color:red; border-top:none">
+                    
+                    <td colspan="10" style="text-align:right; font-size:18px; border-top:none">
                         <input type="submit" value="Đặt hàng" class="btn btn-success" />
                     </td>
                 </tr>

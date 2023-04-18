@@ -40,6 +40,11 @@ namespace WebBanGiayMoi.Controllers
         //Trang giỏ hàng
         public ActionResult ShowToCart()
         {
+            if(Session["Profile"] == null)
+            {
+                return RedirectToAction("login", "Account");
+            }
+
             if (Session["Cart"] == null)
                 return RedirectToAction("ShowToCart", "ShoppingCart");
             Cart cart = Session["Cart"] as Cart;

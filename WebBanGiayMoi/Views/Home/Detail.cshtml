@@ -16,7 +16,6 @@
             <h3>@Html.DisplayFor(model => model.Name)</h3>
             <p>Giá: <strong style="color:red;font-size:28px"> @Html.DisplayFor(model => model.Gia)vnđ</strong></p>
             <p>Mô tả: @Html.DisplayFor(model => model.Description)</p>
-            <p>Số lượng tồn: @Html.DisplayFor(model => model.SoLuong)</p>
             <p>
                 @Html.ActionLink("Buy", "AddtoCart", "ShoppingCart", new
                       {
@@ -28,5 +27,5 @@
     </div>
 </div>
 <h2>Chi tiết</h2>
-@Html.DisplayFor(model => model.Content)
+@Html.Raw(Model.Content)
 

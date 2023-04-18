@@ -191,37 +191,13 @@
     </Compile>
     <Compile Include="Helper\ConstantHelper.cs" />
     <Compile Include="Helper\SendMail.cs" />
-    <Compile Include="Migrations\202304041540382_dautien.cs" />
-    <Compile Include="Migrations\202304041540382_dautien.designer.cs">
-      <DependentUpon>202304041540382_dautien.cs</DependentUpon>
+    <Compile Include="Migrations\202304161013037_thembangpost.cs" />
+    <Compile Include="Migrations\202304161013037_thembangpost.designer.cs">
+      <DependentUpon>202304161013037_thembangpost.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304121414377_thembang.cs" />
-    <Compile Include="Migrations\202304121414377_thembang.designer.cs">
-      <DependentUpon>202304121414377_thembang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304121421049_thembangorder.cs" />
-    <Compile Include="Migrations\202304121421049_thembangorder.designer.cs">
-      <DependentUpon>202304121421049_thembangorder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304131507368_chude1.cs" />
-    <Compile Include="Migrations\202304131507368_chude1.designer.cs">
-      <DependentUpon>202304131507368_chude1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304131524221_news1.cs" />
-    <Compile Include="Migrations\202304131524221_news1.designer.cs">
-      <DependentUpon>202304131524221_news1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304131536223_news2.cs" />
-    <Compile Include="Migrations\202304131536223_news2.designer.cs">
-      <DependentUpon>202304131536223_news2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304131628081_topic.cs" />
-    <Compile Include="Migrations\202304131628081_topic.designer.cs">
-      <DependentUpon>202304131628081_topic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304160802364_themdata.cs" />
-    <Compile Include="Migrations\202304160802364_themdata.designer.cs">
-      <DependentUpon>202304160802364_themdata.cs</DependentUpon>
+    <Compile Include="Migrations\202304180649478_themcontent.cs" />
+    <Compile Include="Migrations\202304180649478_themcontent.designer.cs">
+      <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -360,29 +336,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202304041540382_dautien.resx">
-      <DependentUpon>202304041540382_dautien.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304161013037_thembangpost.resx">
+      <DependentUpon>202304161013037_thembangpost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304121414377_thembang.resx">
-      <DependentUpon>202304121414377_thembang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304121421049_thembangorder.resx">
-      <DependentUpon>202304121421049_thembangorder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304131507368_chude1.resx">
-      <DependentUpon>202304131507368_chude1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304131524221_news1.resx">
-      <DependentUpon>202304131524221_news1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304131536223_news2.resx">
-      <DependentUpon>202304131536223_news2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304131628081_topic.resx">
-      <DependentUpon>202304131628081_topic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304160802364_themdata.resx">
-      <DependentUpon>202304160802364_themdata.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304180649478_themcontent.resx">
+      <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace WebBanGiayMoi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class news1 : IMigrationMetadata
+    public sealed partial class thembangpost : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(news1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(thembangpost));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304131524221_news1"; }
+            get { return "202304161013037_thembangpost"; }
         }
         
         string IMigrationMetadata.Source
