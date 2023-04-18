@@ -126,15 +126,15 @@ namespace WebBanGiayMoi.Controllers
                 }
                 _db.SaveChanges();
                 var gioHangCuaToi = Session["Cart"] as Cart;
-                SendMail.SendEmail(/*form["Email"]*/ userCurrent.Email, "Đơn hàng số: " + _order.Id + " tại website giàypro",
-               "Tổng số tiền là: " + gioHangCuaToi.Total_Money() + " - Cảm ơn bạn đã mua hàng!!!", "");
+                SendMail.SendEmail(/*form["Email"]*/ userCurrent.Email, "Cảm ơn bạn đã mua hàng tại website giày pro",
+               "Tổng số tiền là: " + gioHangCuaToi.Total_Money() + " - Chúc bạn mua sắm vui vẻ!!!", "");
                 cart.ClearCart();
 
                 return RedirectToAction("Shopping_Success", "ShoppingCart");
             }
             catch
             {
-                return Content("Lỗi rồi bạn ơi, Mời bạn kiểm tra lại thông tin đã điền");
+                return Content("Đã xảy ra lỗi, mời bạn kiểm tra lại");
             }
         }
 
