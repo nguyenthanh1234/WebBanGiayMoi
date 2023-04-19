@@ -30,8 +30,32 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
-                    <Li>@Html.ActionLink("Sản phẩm", "SanPham", "Home") </Li>
-                    <li>@Html.ActionLink("Tin tức", "News", "Home")</li>
+                    <Li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Sản phẩm
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/home/sanpham">Tất cả sản phẩm</a></li>
+                            <li><a href="#">Giày nam</a></li>
+                            <li><a href="#">Giày nữ</a></li>
+                            <li><a href="#">Giày trẻ em</a></li>
+                        </ul>
+
+                    </Li>
+                    <Li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Tin tức
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/home/news">Tất cả tin tức</a></li>
+                            <li><a href="#">Thời trang</a></li>
+                            <li><a href="#">Sự kiện</a></li>
+                            <li><a href="#">Thông báo</a></li>
+                        </ul>
+
+                    </Li>
                     <li>@Html.ActionLink("Về chúng tôi", "About", "Home")</li>
                     <li>@Html.ActionLink("Liên hệ", "Contact", "Home")</li>
                 </ul>
