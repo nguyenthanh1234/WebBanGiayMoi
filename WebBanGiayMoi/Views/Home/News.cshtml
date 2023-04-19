@@ -5,18 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>@ViewBag.Title</h2>
-<!--Tìm kiếm-->
-@*@using (Html.BeginForm("News", "Home", FormMethod.Get, new { @class = "form-inline" }))*@
-@*{
-    <div class="form-group form-inline" style="display: flex; margin-top:30px">
-        <input type="Text" class="form-control col-md-10" value="@ViewBag.Keyword"
-               name="searchString" placeholder="Nhập tên giày cần tìm">
 
-        <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left:10px;">
-    </div>
-    <br>
-}*@
-<!--Kết thúc - tìm kiếm-->
 <div class="row">
     @foreach (var item in Model)
     {
@@ -27,6 +16,7 @@
                 </div>
                 <div class="panel-body">
                     <img src="@item.Image" width="100%" />
+                    @*<p><strong>Chủ đề:</strong>@i</p>*@
                     <p>@item.ShortContent</p>
                 </div>
                 <div class="panel-footer clearfix">

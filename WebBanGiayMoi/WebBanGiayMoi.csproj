@@ -191,13 +191,9 @@
     </Compile>
     <Compile Include="Helper\ConstantHelper.cs" />
     <Compile Include="Helper\SendMail.cs" />
-    <Compile Include="Migrations\202304161013037_thembangpost.cs" />
-    <Compile Include="Migrations\202304161013037_thembangpost.designer.cs">
-      <DependentUpon>202304161013037_thembangpost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304180649478_themcontent.cs" />
-    <Compile Include="Migrations\202304180649478_themcontent.designer.cs">
-      <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
+    <Compile Include="Migrations\202304190838305_themdata.cs" />
+    <Compile Include="Migrations\202304190838305_themdata.designer.cs">
+      <DependentUpon>202304190838305_themdata.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -315,6 +311,7 @@
     <Content Include="Views\Account\EditProfile.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\DetailNews.cshtml" />
+    <Content Include="Views\Home\allNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,11 +333,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202304161013037_thembangpost.resx">
-      <DependentUpon>202304161013037_thembangpost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304180649478_themcontent.resx">
-      <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304190838305_themdata.resx">
+      <DependentUpon>202304190838305_themdata.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

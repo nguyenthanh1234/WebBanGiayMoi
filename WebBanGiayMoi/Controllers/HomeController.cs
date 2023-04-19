@@ -75,5 +75,11 @@ namespace WebBanGiayMoi.Controllers
             News baiviettaivitri = db.blog.ToList().Find(x => x.ID == id);
             return View(baiviettaivitri);
         }
+
+        public ActionResult allNews()
+        {
+            return View();
+        }
+
     }
 }
