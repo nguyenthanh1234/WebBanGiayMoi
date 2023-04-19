@@ -22,7 +22,10 @@ namespace WebBanGiayMoi.Controllers
             if (page == null)
                 page = 1;
             int pageSize = 4;
-            ViewBag.Hienthi = db.blog.ToList();
+            ViewBag.HienThiBaiViet = db.blog.ToList().OrderByDescending(m => m.ID).ToPagedList(1, pageSize);
+            ViewBag.HienThiGiayNu = db.Giays.ToList().Where(m => m.CategoryId == 1).OrderByDescending(m => m.Id).ToPagedList(1, pageSize);
+            ViewBag.HienThiGiayNam = db.Giays.ToList().Where(m => m.CategoryId == 2).OrderByDescending(m => m.Id).ToPagedList(1, pageSize);
+            ViewBag.HienThiGiayTreEm = db.Giays.ToList().Where(m => m.CategoryId == 3).OrderByDescending(m => m.Id).ToPagedList(1, pageSize);
             return View(Giay.GetAll(searchString).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
             
         }

@@ -2,7 +2,10 @@
 @model PagedList.IPagedList<WebBanGiayMoi.Models.Giay>
 @{
     ViewBag.Title = "Home Page";
-    IEnumerable<WebBanGiayMoi.Models.News> baiviet = ViewBag.Hienthi as IEnumerable<WebBanGiayMoi.Models.News>;
+    IEnumerable<WebBanGiayMoi.Models.News> baiviet = ViewBag.HienThiBaiViet as IEnumerable<WebBanGiayMoi.Models.News>;
+    IEnumerable<WebBanGiayMoi.Models.Giay> GiayNu = ViewBag.HienThiGiayNu as IEnumerable<WebBanGiayMoi.Models.Giay>;
+    IEnumerable<WebBanGiayMoi.Models.Giay> GiayNam = ViewBag.HienThiGiayNam as IEnumerable<WebBanGiayMoi.Models.Giay>;
+    IEnumerable<WebBanGiayMoi.Models.Giay> GiayTreEm = ViewBag.HienThiGiayTreEm as IEnumerable<WebBanGiayMoi.Models.Giay>;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!--Banner-->
@@ -127,10 +130,8 @@
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày nữ</b></u></h3>
 <!--Sản phẩm-->
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (var item in GiayNu)
     {
-        if (item.CategoryId == 1)
-        {
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel panel-heading">
@@ -155,17 +156,16 @@
                     </div>
                 </div>
             </div>
-        }
+        
     }
 </div>
+
 <!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày nam</b></u></h3>
 <!--Sản phẩm-->
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (var item in GiayNam)
     {
-        if (item.CategoryId == 2)
-        {
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel panel-heading">
@@ -190,17 +190,16 @@
                     </div>
                 </div>
             </div>
-        }
+        
     }
 </div>
+
 <!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày trẻ em</b></u></h3>
 <!--Sản phẩm-->
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (var item in GiayTreEm)
     {
-        if (item.CategoryId == 3)
-        {
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel panel-heading">
@@ -225,8 +224,11 @@
                     </div>
                 </div>
             </div>
-        }
+        
     }
+
+
+
 </div>
 <!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Tin tức</b></u></h3>
@@ -234,33 +236,32 @@
 <div class="row">
     @foreach (var item in baiviet)
     {
-        
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel panel-heading">
-                        <strong>@item.Title</strong>
-                    </div>
-                    <div class="panel-body">
-                        <p><strong>Mô tả: </strong>@item.ShortContent</p>
-                        <img src="@item.Image" width="100%" />
-                    </div>
-                    <div class="panel-footer clearfix">
-                        <div class="pull-right">
-                            
-                            @Html.ActionLink("Đọc thêm...", "DetailNews", new
-                            {
-                                id = item.ID
-                            }, new { @class = "btn btn-default" })
-                        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    <strong>@item.Title</strong>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Mô tả: </strong>@item.ShortContent</p>
+                    <img src="@item.Image" width="100%" />
+                </div>
+                <div class="panel-footer clearfix">
+                    <div class="pull-right">
+
+                        @Html.ActionLink("Đọc thêm...", "DetailNews", new
+                   {
+                       id = item.ID
+                   }, new { @class = "btn btn-default" })
                     </div>
                 </div>
             </div>
+        </div>
     }
-    
+
 </div>
 <!--Thương hiệu-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Thương hiệu</b></u></h3>
-<div class="brands">
+<div class="brands" style="margin-bottom:60px">
     <div class="small-container">
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
