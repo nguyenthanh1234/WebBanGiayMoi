@@ -28,10 +28,64 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Image, new
+            {
+                htmlAttributes = new
+                {
+                    @class =
+            "form-control"
+                }
+            })
+
+            @Html.ValidationMessageFor(model => model.Image, "", new
+            {
+                @class = "text-danger"
+            })
+
+            <input type="file" name="fileUpload" id="fileUpload" accept="images/*"
+                   style="display:none;" />
+            <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" style="margin-top:5px;" />
         </div>
     </div>
+    @section upload
+    {
+        <script>
+            $(function () {
+                $('#btnUpload').click(function () {
+                    $('#fileUpload').trigger('click');
+                });
+            });
+            $('#fileUpload').change(function () {
+                if (window.FormData !== undefined) {
+                    var fileUpload = $('#fileUpload').get(0);
+                    var files = fileUpload.files;
+                    var formData = new FormData();
+                    formData.append('file', files[0]);
+
+                    $.ajax(
+                        {
+                            type: 'POST',
+
+                            url: '/Admin/News/ProcessUpload',
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            success: function (urlImage) {
+                                $('#pictureUpload').attr('src', urlImage);
+                                $('#Image').val(urlImage);
+                            },
+
+                            error: function (err) {
+
+                                alert('Error ', err.statusText);
+                            }
+                        });
+                }
+            });
+        </script>
+    }
+
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.ShortContent, htmlAttributes: new { @class = "control-label col-md-2" })

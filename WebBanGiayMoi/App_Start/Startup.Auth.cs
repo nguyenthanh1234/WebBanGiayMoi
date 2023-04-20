@@ -58,11 +58,11 @@ namespace WebBanGiayMoi
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "758476509281-k94spgsljpvo5kq2m2poah2mo6b09m7k.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }

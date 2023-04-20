@@ -411,6 +411,8 @@ namespace WebBanGiayMoi.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    ApplicationUser userCurrent = UserManager.FindByEmail(loginInfo.Email);
+                    Session["Profile"] = userCurrent;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -445,16 +447,19 @@ namespace WebBanGiayMoi.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Address = model.Address, Phone = model.Phone };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        ApplicationUser userCurrent = UserManager.FindByName(model.Email);
+                        Session["Profile"] = userCurrent;
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
+                  
                 }
                 AddErrors(result);
             }

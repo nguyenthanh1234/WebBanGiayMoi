@@ -10,36 +10,38 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<div class="row">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia)
+        </th>
+        <th></th>
+    </tr>
+
     @foreach (var item in Model)
     {
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Name</strong>
-                </div>
-                <div class="panel-body">
-                    <p><strong>Mô tả: </strong>@item.Description</p>
-                    <p><strong>Giá: </strong>@item.Gia</p>
-                    <p><img src="@item.Hinh" width="100%"></p>
-                    @*<p><strong>Còn lại: </strong>@item.soluongton</p>
-                        <p><strong>Ngày cập nhật: </strong>@item.ngaycapnhat</p>*@
-                </div>
-                <div class="panel-footer clearfix">
-                    <div class="pull-right">
-                        @Html.ActionLink("Read more...", "Details", "Product", new
-                        {
-                            id = item.Id
-                        }, new { @class = "btn btn-default" })
-                        @Html.ActionLink("Delete", "Delete","Product", new { id = item.Id }, new
-                        { @class = "btn btn-success" })
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new
-                        {
-                        @class = "btn btn-success"
-                        })
-                    </div>
-                </div>
-            </div>
-        </div>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
     }
-</div>
+
+</table>
