@@ -195,6 +195,14 @@
     <Compile Include="Migrations\202304190838305_themdata.designer.cs">
       <DependentUpon>202304190838305_themdata.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304210927294_kieudlieu.cs" />
+    <Compile Include="Migrations\202304210927294_kieudlieu.designer.cs">
+      <DependentUpon>202304210927294_kieudlieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304210959416_sua.cs" />
+    <Compile Include="Migrations\202304210959416_sua.designer.cs">
+      <DependentUpon>202304210959416_sua.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -250,6 +258,7 @@
     <Content Include="Areas\Admin\Views\News\Details.cshtml" />
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Camnang.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -311,7 +320,13 @@
     <Content Include="Views\Account\EditProfile.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\DetailNews.cshtml" />
-    <Content Include="Views\Home\allNews.cshtml" />
+    <Content Include="Views\Home\Camnang.cshtml" />
+    <Content Include="Views\Home\LifeStyle.cshtml" />
+    <Content Include="Views\Home\KienThucThoiTrang.cshtml" />
+    <Content Include="Views\Home\Nike.cshtml" />
+    <Content Include="Views\Home\Adidas.cshtml" />
+    <Content Include="Views\Home\MLB.cshtml" />
+    <Content Include="Views\Home\Converse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,6 +350,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202304190838305_themdata.resx">
       <DependentUpon>202304190838305_themdata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304210927294_kieudlieu.resx">
+      <DependentUpon>202304210927294_kieudlieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304210959416_sua.resx">
+      <DependentUpon>202304210959416_sua.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

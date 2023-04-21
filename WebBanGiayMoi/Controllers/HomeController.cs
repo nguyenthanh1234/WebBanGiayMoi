@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
@@ -79,9 +80,97 @@ namespace WebBanGiayMoi.Controllers
             return View(baiviettaivitri);
         }
 
-        public ActionResult allNews()
+        
+        public ActionResult Camnang(int? page)
         {
-            return View();
+            if (page == null) page = 1;
+
+            var topic = db.blog.Where(s => s.TopicID == 2).ToList();
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            if (topic == null)
+            {
+                return HttpNotFound();
+            }
+            return View(topic.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult LifeStyle(int? page)
+        {
+            if (page == null) page = 1;
+
+            var topic = db.blog.Where(s => s.TopicID == 3).ToList();
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            if (topic == null)
+            {
+                return HttpNotFound();
+            }
+            return View(topic.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult KienThucThoiTrang(int? page)
+        {
+            if (page == null) page = 1;
+
+            var topic = db.blog.Where(s => s.TopicID == 4).ToList();
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            if (topic == null)
+            {
+                return HttpNotFound();
+            }
+            return View(topic.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Nike(int? page)
+        {
+            if (page == null) page = 1;
+
+            var category = db.Giays.Where(s => s.CategoryId == 1).ToList();
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Adidas(int? page)
+        {
+            if (page == null) page = 1;
+
+            var category = db.Giays.Where(s => s.CategoryId == 2).ToList();
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult MLB(int? page)
+        {
+            if (page == null) page = 1;
+
+            var category = db.Giays.Where(s => s.CategoryId == 3).ToList();
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Converse(int? page)
+        {
+            if (page == null) page = 1;
+
+            var category = db.Giays.Where(s => s.CategoryId == 4).ToList();
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category.ToPagedList(pageNumber, pageSize));
         }
 
     }
