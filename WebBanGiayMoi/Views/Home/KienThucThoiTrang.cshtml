@@ -16,9 +16,15 @@
                     <strong>@item.Title</strong>
                 </div>
                 <div class="panel-body">
-                    <img src="@item.Image" width="100%" />
-                    @*<p><strong>Chủ đề:</strong>@i</p>*@
-                    <p>@item.ShortContent</p>
+                    @if (item.ShortContent.Length < 110)
+                    {
+                        <p><strong>Mô tả: </strong>@item.ShortContent</p>
+                    }
+                    else
+                    {
+                        <p><strong>Mô tả: </strong>@item.ShortContent.Substring(0, 110)...</p>
+                    }
+                    <img src="@item.Image" width="100%" height="120px" />
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
