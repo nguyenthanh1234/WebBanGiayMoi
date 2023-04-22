@@ -200,6 +200,18 @@
     <Compile Include="Migrations\202304180649478_themcontent.designer.cs">
       <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304210946072_doikieu.cs" />
+    <Compile Include="Migrations\202304210946072_doikieu.designer.cs">
+      <DependentUpon>202304210946072_doikieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304211021586_doikieuint.cs" />
+    <Compile Include="Migrations\202304211021586_doikieuint.designer.cs">
+      <DependentUpon>202304211021586_doikieuint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304220908193_themphone.cs" />
+    <Compile Include="Migrations\202304220908193_themphone.designer.cs">
+      <DependentUpon>202304220908193_themphone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -349,6 +361,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304180649478_themcontent.resx">
       <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304210946072_doikieu.resx">
+      <DependentUpon>202304210946072_doikieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304211021586_doikieuint.resx">
+      <DependentUpon>202304211021586_doikieuint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304220908193_themphone.resx">
+      <DependentUpon>202304220908193_themphone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

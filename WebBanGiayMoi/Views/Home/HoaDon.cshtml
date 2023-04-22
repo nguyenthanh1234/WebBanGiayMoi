@@ -13,10 +13,15 @@
             @Html.DisplayNameFor(model => model.Order.ApplicationUser.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Giay.Name)
+            @Html.DisplayNameFor(model => model.Order.Descriptions)
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Order.Descriptions)
+            @Html.DisplayNameFor(model => model.Order.PhoneKH)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Giay.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UnitPriceSale)
@@ -39,10 +44,15 @@
                     @User.Name
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Giay.Name)
+                    @Html.DisplayFor(modelItem => item.Order.Descriptions)
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Order.Descriptions)
+                    @Html.DisplayFor(modelItem => item.Order.PhoneKH)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Giay.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UnitPriceSale)

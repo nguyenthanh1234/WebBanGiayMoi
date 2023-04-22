@@ -39,7 +39,7 @@
                         @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
                         {
                             <input type="hidden" value="@item._shopping_product.Id" name="Id_Product" />
-                            <input type="number" value="@item._shopping_quantity" name="Quantity" />
+                            <input type="number" value="@item._shopping_quantity" name="Quantity" min="1" max="100" />
                             <input type="submit" value="Update Quantity" />
                         }
 

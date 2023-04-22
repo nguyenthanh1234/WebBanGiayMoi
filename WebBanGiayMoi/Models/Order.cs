@@ -14,6 +14,10 @@ namespace WebBanGiayMoi.Models
         [Required]
         public string Descriptions { get; set; }
 
+        [Display(Name = "Số điện thoại")]
+        [Required]
+        public string PhoneKH { get; set; }
+
         [Display(Name = "Ngày đặt")]
         [Required]
         public DateTime OrderDate { get; set; }

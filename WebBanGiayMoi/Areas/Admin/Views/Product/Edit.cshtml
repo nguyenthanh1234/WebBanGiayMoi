@@ -4,7 +4,6 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
@@ -28,7 +27,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" } )
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", id = "message", name = "message", @placeholder = "Nhập mô tả ngắn ở đây", rows = "5", cols = "50" })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
