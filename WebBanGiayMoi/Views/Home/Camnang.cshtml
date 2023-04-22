@@ -1,11 +1,12 @@
-﻿@using PagedList.Mvc
-@model PagedList.IPagedList<WebBanGiayMoi.Models.News>
+﻿@model PagedList.IPagedList<WebBanGiayMoi.Models.News>
+@using PagedList.Mvc;
+
 @{
-    ViewBag.Title = "Tin Tức";
+    ViewBag.Title = "Cẩm Nang Chơi Giày ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title</h2>
 
+<h2>Cẩm Nang Chơi Giày</h2>
 <div class="row">
     @foreach (var item in Model)
     {
@@ -16,15 +17,8 @@
                 </div>
                 <div class="panel-body">
                     <img src="@item.Image" width="100%" />
-                    @if (item.ShortContent.Length < 110)
-                    {
-                        <p><strong>Mô tả: </strong>@item.ShortContent</p>
-                    }
-                    else
-                    {
-                        <p><strong>Mô tả: </strong>@item.ShortContent.Substring(0, 110)...</p>
-
-                    }
+                    @*<p><strong>Chủ đề:</strong>@i</p>*@
+                    <p>@item.ShortContent</p>
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
@@ -39,16 +33,11 @@
         </div>
     }
 </div>
-<!--Phân trang-->
-<div>
-    <div>
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
-        @Model.PageCount
-    </div>
-    <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("News", new { page = page }))
-    </div>
-</div>
+<!-- Thêm phân trang vào -->
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",new { page }))
+<!-- Kết thúc -->
 <style>
     .MenuTrang li {
         display: inline;
@@ -91,4 +80,3 @@
         display: none;
     }
 </style>
-<!--Kết thúc - phân trang-->

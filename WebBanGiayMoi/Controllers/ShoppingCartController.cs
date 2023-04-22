@@ -122,7 +122,7 @@ namespace WebBanGiayMoi.Controllers
                     OrderDetail _order_Detail = new OrderDetail();
                     _order_Detail.OrderId = _order.Id;
                     _order_Detail.GiayId = item._shopping_product.Id;
-                    _order_Detail.UnitPriceSale = item._shopping_product.Gia;
+                    _order_Detail.UnitPriceSale =item._shopping_product.Gia;
                     _order_Detail.QuantitySale = item._shopping_quantity;
                     _db.OrderDetails.Add(_order_Detail);
                 }

@@ -192,13 +192,17 @@
     </Compile>
     <Compile Include="Helper\ConstantHelper.cs" />
     <Compile Include="Helper\SendMail.cs" />
-    <Compile Include="Migrations\202304161013037_thembangpost.cs" />
-    <Compile Include="Migrations\202304161013037_thembangpost.designer.cs">
-      <DependentUpon>202304161013037_thembangpost.cs</DependentUpon>
+    <Compile Include="Migrations\202304190838305_themdata.cs" />
+    <Compile Include="Migrations\202304190838305_themdata.designer.cs">
+      <DependentUpon>202304190838305_themdata.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304180649478_themcontent.cs" />
-    <Compile Include="Migrations\202304180649478_themcontent.designer.cs">
-      <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
+    <Compile Include="Migrations\202304210927294_kieudlieu.cs" />
+    <Compile Include="Migrations\202304210927294_kieudlieu.designer.cs">
+      <DependentUpon>202304210927294_kieudlieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304210959416_sua.cs" />
+    <Compile Include="Migrations\202304210959416_sua.designer.cs">
+      <DependentUpon>202304210959416_sua.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202304210946072_doikieu.cs" />
     <Compile Include="Migrations\202304210946072_doikieu.designer.cs">
@@ -267,6 +271,7 @@
     <Content Include="Areas\Admin\Views\News\Details.cshtml" />
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Camnang.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -328,6 +333,10 @@
     <Content Include="Views\Account\EditProfile.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\DetailNews.cshtml" />
+    <Content Include="Views\Home\Camnang.cshtml" />
+    <Content Include="Views\Home\LifeStyle.cshtml" />
+    <Content Include="Views\Home\KienThucThoiTrang.cshtml" />
+ 
     <Content Include="Views\Brands\Adidas.cshtml" />
     <Content Include="Views\Brands\Detail.cshtml" />
     <Content Include="Views\Brands\Nike.cshtml" />
@@ -356,11 +365,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202304161013037_thembangpost.resx">
-      <DependentUpon>202304161013037_thembangpost.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304190838305_themdata.resx">
+      <DependentUpon>202304190838305_themdata.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304180649478_themcontent.resx">
-      <DependentUpon>202304180649478_themcontent.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304210927294_kieudlieu.resx">
+      <DependentUpon>202304210927294_kieudlieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304210959416_sua.resx">
+      <DependentUpon>202304210959416_sua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304210946072_doikieu.resx">
       <DependentUpon>202304210946072_doikieu.cs</DependentUpon>

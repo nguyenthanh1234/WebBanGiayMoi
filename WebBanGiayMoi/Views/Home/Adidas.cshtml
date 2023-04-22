@@ -1,37 +1,44 @@
 ﻿@using PagedList.Mvc
-@model PagedList.IPagedList<WebBanGiayMoi.Models.News>
+@model PagedList.IPagedList<WebBanGiayMoi.Models.Giay>
 @{
-    ViewBag.Title = "Tin Tức";
+    ViewBag.Title = "Adidas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title</h2>
+<h2>Adidas</h2>
+<!--Tìm kiếm-->
+@using (Html.BeginForm("SanPham", "Home", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group form-inline" style="display: flex; margin-top:30px">
+        <input type="Text" class="form-control col-md-10" value="@ViewBag.Keyword"
+               name="searchString" placeholder="Nhập tên giày cần tìm">
 
+        <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left:10px;">
+    </div>
+    <br>
+}
+<!--Kết thúc - tìm kiếm-->
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel panel-heading">
-                    <strong>@item.Title</strong>
+                    <strong>@item.Name</strong>
                 </div>
                 <div class="panel-body">
-                    <img src="@item.Image" width="100%" />
-                    @if (item.ShortContent.Length < 110)
-                    {
-                        <p><strong>Mô tả: </strong>@item.ShortContent</p>
-                    }
-                    else
-                    {
-                        <p><strong>Mô tả: </strong>@item.ShortContent.Substring(0, 110)...</p>
-
-                    }
+                    <p><strong>Mô tả: </strong>@item.Description</p>
+                    <p><strong>Giá: </strong>@item.Gia</p>
+                    <img src="@item.Hinh" width="100%" />
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
-
-                        @Html.ActionLink("Đọc thêm...", "DetailNews", new
+                        @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new
+                   {
+                       id = item.Id
+                   }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Đọc thêm...", "Detail", new
                         {
-                            id = item.ID
+                            id = item.Id
                         }, new { @class = "btn btn-default" })
                     </div>
                 </div>
@@ -46,7 +53,7 @@
         @Model.PageCount
     </div>
     <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("News", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
     </div>
 </div>
 <style>
