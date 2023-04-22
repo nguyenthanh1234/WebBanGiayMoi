@@ -5,21 +5,26 @@
     var user = Session["Profile"] as WebBanGiayMoi.Models.ApplicationUser;
 }
 
-<h2>MyProfile</h2>
-<ul>
-    <li>
-        Tên: @user.Name
-    </li>
-    <li>
-        Email: @user.Email
-    </li>
-    <li>
-        Số điện thoại: @user.Phone
-    </li>
-    <li>
-        Địa chỉ: @user.Address
-    </li>
-</ul>
+<h2 style="margin-bottom:15px">Thông tin người dùng</h2>
+<table class="table table-bordered table-striped table-responsive-stack" id="tableOne">
+    <thead class="thead-dark">
+        <tr>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> @user.Name</td>
+            <td> @user.Email</td>
+            <td>@user.Phone</td>
+            <td>@user.Address</td>
+        </tr>
+    </tbody>
+</table>
 @Html.ActionLink("Edit", "EditProfile")
+<img style="margin-top:30px;text-align:center" src="~/Content/images/logoweb.png" width="100%" />
 
 

@@ -16,7 +16,7 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            return View(db.Giays.ToList());
+            return View(db.Giays.ToList().OrderByDescending(s => s.Id));
         }
 
         // GET: Giays/Details/5

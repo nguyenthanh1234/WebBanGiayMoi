@@ -182,6 +182,7 @@
     <Compile Include="Areas\Admin\Controllers\OrderDetailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderDetailsController.cs" />
@@ -323,10 +324,14 @@
     <Content Include="Views\Home\Camnang.cshtml" />
     <Content Include="Views\Home\LifeStyle.cshtml" />
     <Content Include="Views\Home\KienThucThoiTrang.cshtml" />
-    <Content Include="Views\Home\Nike.cshtml" />
-    <Content Include="Views\Home\Adidas.cshtml" />
-    <Content Include="Views\Home\MLB.cshtml" />
-    <Content Include="Views\Home\Converse.cshtml" />
+ 
+    <Content Include="Views\Brands\Adidas.cshtml" />
+    <Content Include="Views\Brands\Detail.cshtml" />
+    <Content Include="Views\Brands\Nike.cshtml" />
+    <Content Include="Views\Brands\Mlb.cshtml" />
+    <Content Include="Views\Brands\Converse.cshtml" />
+    <Content Include="Views\Brands\Vans.cshtml" />
+    <Content Include="Views\Brands\Valentino.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
