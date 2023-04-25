@@ -28,12 +28,13 @@ namespace WebBanGiayMoi.Controllers
             return cart;
         }
 
-        public ActionResult AddtoCart(int id)
+        public ActionResult AddtoCart(FormCollection form)
         {
+            int id = int.Parse(form["idpro"]);
             var pro = _db.Giays.SingleOrDefault(x => x.Id == id);
             if (pro != null)
             {
-                GetCart().Add(pro);
+                GetCart().Add(pro, int.Parse(form["soLuong"]));
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
@@ -105,6 +106,7 @@ namespace WebBanGiayMoi.Controllers
                 var userCurrent = Session["Profile"] as ApplicationUser;
                 _order.ApplicationUserId = userCurrent.Id;
                 _order.Descriptions = userCurrent.Address;
+                _order.PhoneKH = userCurrent.Phone;
 
                 //foreach (var item in user)
                 //{

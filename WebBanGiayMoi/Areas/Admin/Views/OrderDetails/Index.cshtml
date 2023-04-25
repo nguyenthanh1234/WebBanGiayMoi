@@ -13,10 +13,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Giay.Name)
+            ID khách hàng
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Order.Descriptions)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.PhoneKH)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Giay.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UnitPriceSale)
@@ -31,10 +39,16 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Giay.Name)
+                @Html.DisplayFor(modelItem => item.Order.ApplicationUserId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Order.Descriptions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.PhoneKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giay.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UnitPriceSale)

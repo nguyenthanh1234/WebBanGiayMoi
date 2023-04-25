@@ -8,21 +8,33 @@
 <div class="row" style="margin-top:30px">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="thumbnail">
-            <img src="@Html.DisplayFor(model=>model.Hinh)" alt="thumbnail" width="500px">
+            <img src="@Html.DisplayFor(model => model.Hinh)" alt="thumbnail" width="500px">
         </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="caption">
             <h1>@Html.DisplayFor(model => model.Name)</h1>
-            <p>Giá: <strong style="color:red;font-size:28px"> @Html.DisplayFor(model => model.Gia)vnđ</strong></p>
-            <p>Mô tả: @Html.DisplayFor(model => model.Description)</p>
-            <p>
-                @Html.ActionLink("Buy", "AddtoCart", "ShoppingCart", new
-                      {
-                          id = Model.Id
-                      }, new { @class = "btn btn-success" })
+            @{
+                var gia = Model.Gia;
+            }
+            <p><strong>Giá:</strong> <strong style="color:red;font-size:24px"> @gia.ToString("#,##0 VND")</strong></p>
+            @{
+                var mota = Model.Description;
+            }
+            <p><strong>Mô tả:</strong> <br>@Html.Raw(mota.Replace("\n", "</br>")))</p>
+
+            @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+            {
+                int id = Model.Id;
+
+                <strong>Số lượng: </strong>
+                <input type="number" name="soLuong" value="1" required style="margin-bottom:20px" min="1" max="100"  />
+                <input type="hidden" value="@Model.Id" name="idpro" required />
+                <br />
+                <input type="submit" value="Buy" class="btn btn-success" />
                 @Html.ActionLink("Back", "Index", "", new { @class = "btn btn-info" })
-            </p>
+            }
+
         </div>
     </div>
 </div>

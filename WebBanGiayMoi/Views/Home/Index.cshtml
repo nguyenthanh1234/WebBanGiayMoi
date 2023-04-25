@@ -74,15 +74,15 @@
                         @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
                         {
                             <input type="hidden" name="soLuong" value="1" required" />
-                            <input type="hidden" value="@item.Id" name="idpro" required />
+                            <input type="hidden" value="@item.Id" name="idpro" required />                  
                             <input type="submit" value="Add to card" class="btn btn-success" />
                             @Html.ActionLink("Đọc thêm...", "Detail", new
                            {
                                id = item.Id
                            }, new { @class = "btn btn-default" })
-                        }
+                            }
 
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -145,41 +145,41 @@
 <div class="row">
     @foreach (var item in GiayNu)
     {
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Name</strong>
-                </div>
-                <div class="panel-body">
-                    @if (item.Description.Length < 110)
-                    {
-                        <p><strong>Mô tả: </strong>@item.Description</p>
-                    }
-                    else
-                    {
-                        <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
-                    }
-                    <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
-                    <img src="@item.Hinh" width="100%" />
-                </div>
-                <div class="panel-footer clearfix">
-                    <div class="pull-right">
-                        @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">
+                        <strong>@item.Name</strong>
+                    </div>
+                    <div class="panel-body">
+                        @if (item.Description.Length < 110)
                         {
-                            <input type="hidden" name="soLuong" value="1" required" />
-                            <input type="hidden" value="@item.Id" name="idpro" required />
-                            <input type="submit" value="Add to card" class="btn btn-success" />
-                            @Html.ActionLink("Đọc thêm...", "Detail", new
-                           {
-                               id = item.Id
-                           }, new { @class = "btn btn-default" })
+                            <p><strong>Mô tả: </strong>@item.Description</p>
                         }
+                        else
+                        {
+                            <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
+
+                        }
+                        <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                        <img src="@item.Hinh" width="100%" />
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+                            {
+                                <input type="hidden" name="soLuong" value="1" required" />
+                                <input type="hidden" value="@item.Id" name="idpro" required />
+                                <input type="submit" value="Add to card" class="btn btn-success" />
+                                @Html.ActionLink("Đọc thêm...", "Detail", new
+                               {
+                                   id = item.Id
+                               }, new { @class = "btn btn-default" })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        
     }
 </div>
 
@@ -189,41 +189,41 @@
 <div class="row">
     @foreach (var item in GiayNam)
     {
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Name</strong>
-                </div>
-                <div class="panel-body">
-                    @if (item.Description.Length < 110)
-                    {
-                        <p><strong>Mô tả: </strong>@item.Description</p>
-                    }
-                    else
-                    {
-                        <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
-                    }
-                    <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
-                    <img src="@item.Hinh" width="100%" />
-                </div>
-                <div class="panel-footer clearfix">
-                    <div class="pull-right">
-                        @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">
+                        <strong>@item.Name</strong>
+                    </div>
+                    <div class="panel-body">
+                        @if (item.Description.Length < 110)
                         {
-                            <input type="hidden" name="soLuong" value="1" required" />
-                            <input type="hidden" value="@item.Id" name="idpro" required />
-                            <input type="submit" value="Add to card" class="btn btn-success" />
-                            @Html.ActionLink("Đọc thêm...", "Detail", new
-                           {
-                               id = item.Id
-                           }, new { @class = "btn btn-default" })
+                            <p><strong>Mô tả: </strong>@item.Description</p>
                         }
+                        else
+                        {
+                            <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
+
+                        }
+                        <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                        <img src="@item.Hinh" width="100%" />
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+                            {
+                                <input type="hidden" name="soLuong" value="1" required" />
+                                <input type="hidden" value="@item.Id" name="idpro" required />
+                                <input type="submit" value="Add to card" class="btn btn-success" />
+                                @Html.ActionLink("Đọc thêm...", "Detail", new
+                               {
+                                   id = item.Id
+                               }, new { @class = "btn btn-default" })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        
     }
 </div>
 
@@ -233,41 +233,41 @@
 <div class="row">
     @foreach (var item in GiayTreEm)
     {
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Name</strong>
-                </div>
-                <div class="panel-body">
-                    @if (item.Description.Length < 110)
-                    {
-                        <p><strong>Mô tả: </strong>@item.Description</p>
-                    }
-                    else
-                    {
-                        <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
-                    }
-                    <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
-                    <img src="@item.Hinh" width="100%" />
-                </div>
-                <div class="panel-footer clearfix">
-                    <div class="pull-right">
-                        @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">
+                        <strong>@item.Name</strong>
+                    </div>
+                    <div class="panel-body">
+                        @if (item.Description.Length < 110)
                         {
-                            <input type="hidden" name="soLuong" value="1" required" />
-                            <input type="hidden" value="@item.Id" name="idpro" required />
-                            <input type="submit" value="Add to card" class="btn btn-success" />
-                            @Html.ActionLink("Đọc thêm...", "Detail", new
-                           {
-                               id = item.Id
-                           }, new { @class = "btn btn-default" })
+                            <p><strong>Mô tả: </strong>@item.Description</p>
                         }
+                        else
+                        {
+                            <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
+
+                        }
+                        <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                        <img src="@item.Hinh" width="100%" />
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+                            {
+                                <input type="hidden" name="soLuong" value="1" required" />
+                                <input type="hidden" value="@item.Id" name="idpro" required />
+                                <input type="submit" value="Add to card" class="btn btn-success" />
+                                @Html.ActionLink("Đọc thêm...", "Detail", new
+                               {
+                                   id = item.Id
+                               }, new { @class = "btn btn-default" })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        
     }
 
 
@@ -292,8 +292,8 @@
                     else
                     {
                         <p><strong>Mô tả: </strong>@item.ShortContent.Substring(0, 110)...</p>
-                    }
-                    <img src="@item.Image" width="100%" height="120px" />
+                    }              
+                    <img src="@item.Image" width="100%" />
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">

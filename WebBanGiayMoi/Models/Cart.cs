@@ -20,7 +20,7 @@ namespace WebBanGiayMoi.Models
     {
         List<CartItem> items = new List<CartItem>();
         public IEnumerable<CartItem> Items { get { return items; } }
-        public void Add(Giay _pro, int _quantity = 1)
+        public void Add(Giay _pro, int _quantity)
         {
             //Neu them 2 lan vao gio hang cung 1 san pham
             var item = items.FirstOrDefault(s => s._shopping_product.Id == _pro.Id);
