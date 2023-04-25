@@ -22,11 +22,11 @@ namespace WebBanGiayMoi.Controllers
             ViewBag.Keyword = searchString;
             if (page == null)
                 page = 1;
-            int pageSize = 4;
-            ViewBag.HienThiBaiViet = db.blog.ToList().OrderByDescending(m => m.ID).ToPagedList(1, pageSize);
-            ViewBag.HienThiGiayNu = db.Giays.ToList().Where(m => m.CategoryId == 1).OrderByDescending(m => m.Id).ToPagedList(1, pageSize);
-            ViewBag.HienThiGiayNam = db.Giays.ToList().Where(m => m.CategoryId == 2).OrderByDescending(m => m.Id).ToPagedList(1, pageSize);
-            ViewBag.HienThiGiayTreEm = db.Giays.ToList().Where(m => m.CategoryId == 3).OrderByDescending(m => m.Id).ToPagedList(1, pageSize);
+            int pageSize = 8;
+            ViewBag.HienThiBaiViet = db.blog.ToList().OrderByDescending(m => m.ID).ToPagedList(1, 4);
+            ViewBag.HienThiGiayNu = db.Giays.ToList().Where(m => m.CategoryId == 1).OrderByDescending(m => m.Id).ToPagedList(1, 4);
+            ViewBag.HienThiGiayNam = db.Giays.ToList().Where(m => m.CategoryId == 2).OrderByDescending(m => m.Id).ToPagedList(1, 4);
+            ViewBag.HienThiGiayTreEm = db.Giays.ToList().Where(m => m.CategoryId == 3).OrderByDescending(m => m.Id).ToPagedList(1, 4);
             return View(Giay.GetAll(searchString).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
             
         }
@@ -71,7 +71,7 @@ namespace WebBanGiayMoi.Controllers
         {
             if (page == null)
                 page = 1;
-            int pageSize = 4;
+            int pageSize = 20;
             return View(db.blog.ToList().ToPagedList(page.Value, pageSize));
         }
         public ActionResult DetailNews(int id)
@@ -86,7 +86,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 2).ToList();
-            int pageSize = 3;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -99,7 +99,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 3).ToList();
-            int pageSize = 3;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -112,7 +112,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 4).ToList();
-            int pageSize = 3;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -120,58 +120,47 @@ namespace WebBanGiayMoi.Controllers
             }
             return View(topic.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Nike(int? page)
-        {
-            if (page == null) page = 1;
-
-            var category = db.Giays.Where(s => s.CategoryId == 1).ToList();
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category.ToPagedList(pageNumber, pageSize));
-        }
         public ActionResult Adidas(int? page)
         {
-            if (page == null) page = 1;
-
-            var category = db.Giays.Where(s => s.CategoryId == 2).ToList();
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category.ToPagedList(pageNumber, pageSize));
+            if (page == null)
+                page = 1;
+            int pageSize = 20;
+            return View(db.Giays.ToList().Where(m => m.BrandId == 1).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
-        public ActionResult MLB(int? page)
+        public ActionResult Nike(int? page)
         {
-            if (page == null) page = 1;
-
-            var category = db.Giays.Where(s => s.CategoryId == 3).ToList();
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category.ToPagedList(pageNumber, pageSize));
+            if (page == null)
+                page = 1;
+            int pageSize = 20;
+            return View(db.Giays.ToList().Where(m => m.BrandId == 2).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
+        }
+        public ActionResult Mlb(int? page)
+        {
+            if (page == null)
+                page = 1;
+            int pageSize = 20;
+            return View(db.Giays.ToList().Where(m => m.BrandId == 3).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
         public ActionResult Converse(int? page)
         {
-            if (page == null) page = 1;
-
-            var category = db.Giays.Where(s => s.CategoryId == 4).ToList();
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category.ToPagedList(pageNumber, pageSize));
+            if (page == null)
+                page = 1;
+            int pageSize = 20;
+            return View(db.Giays.ToList().Where(m => m.BrandId == 4).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
-
+        public ActionResult Vans(int? page)
+        {
+            if (page == null)
+                page = 1;
+            int pageSize = 20;
+            return View(db.Giays.ToList().Where(m => m.BrandId == 5).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
+        }
+        public ActionResult Valentino(int? page)
+        {
+            if (page == null)
+                page = 1;
+            int pageSize = 20;
+            return View(db.Giays.ToList().Where(m => m.BrandId == 6).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
+        }
     }
 }

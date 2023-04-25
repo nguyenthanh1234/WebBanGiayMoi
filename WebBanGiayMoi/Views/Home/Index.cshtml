@@ -8,6 +8,7 @@
     IEnumerable<WebBanGiayMoi.Models.Giay> GiayTreEm = ViewBag.HienThiGiayTreEm as IEnumerable<WebBanGiayMoi.Models.Giay>;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <!--Banner-->
 <div class="row">
     <img src="~/Content/images/banner.jpg" width="100%" />
@@ -38,7 +39,7 @@
             <input type="Text" class="form-control col-md-10" value="@ViewBag.Keyword"
                    name="searchString" placeholder="Nhập tên giày cần tìm">
 
-            <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left:10px;">
+            <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left: 10px; background: #f57224; border:1px solid #f57224 ">
         </div>
         <br>
     }
@@ -51,21 +52,19 @@
     {
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Name</strong>
-                </div>
-                <div class="panel-body">
-                    @if (item.Description.Length < 110)
+                <div class="panel panel-heading" style="margin-bottom:0">
+                    @if (item.Name.Length < 40)
                     {
-                        <p><strong>Mô tả: </strong>@item.Description</p>
+                        <strong style="font-size: 16px">@item.Name</strong>
                     }
                     else
                     {
-                        <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
+                        <strong style="font-size: 16px">@item.Name.Substring(0,40)...</strong>
                     }
-                    <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                </div>
+                <div class="panel-body">
                     <img src="@item.Hinh" width="100%" />
+                    <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
@@ -145,21 +144,20 @@
     {
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="panel panel-default">
-                    <div class="panel panel-heading">
-                        <strong>@item.Name</strong>
-                    </div>
-                    <div class="panel-body">
-                        @if (item.Description.Length < 110)
+                    <div class="panel panel-heading" style="margin-bottom:0">
+                        @if (item.Name.Length < 40)
                         {
-                            <p><strong>Mô tả: </strong>@item.Description</p>
+                            <strong style="font-size: 16px">@item.Name</strong>
                         }
                         else
                         {
-                            <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
+                            <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
                         }
-                        <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                    </div>
+                    <div class="panel-body">
                         <img src="@item.Hinh" width="100%" />
+                        <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+
                     </div>
                     <div class="panel-footer clearfix">
                         <div class="pull-right">
@@ -189,21 +187,20 @@
     {
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="panel panel-default">
-                    <div class="panel panel-heading">
-                        <strong>@item.Name</strong>
-                    </div>
-                    <div class="panel-body">
-                        @if (item.Description.Length < 110)
+                    <div class="panel panel-heading" style="margin-bottom:0">
+                        @if (item.Name.Length < 40)
                         {
-                            <p><strong>Mô tả: </strong>@item.Description</p>
+                            <strong style="font-size: 16px">@item.Name</strong>
                         }
                         else
                         {
-                            <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
+                            <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
                         }
-                        <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                    </div>
+                    <div class="panel-body">
                         <img src="@item.Hinh" width="100%" />
+                        <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+
                     </div>
                     <div class="panel-footer clearfix">
                         <div class="pull-right">
@@ -233,21 +230,20 @@
     {
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="panel panel-default">
-                    <div class="panel panel-heading">
-                        <strong>@item.Name</strong>
-                    </div>
-                    <div class="panel-body">
-                        @if (item.Description.Length < 110)
+                    <div class="panel panel-heading" style="margin-bottom:0">
+                        @if (item.Name.Length < 40)
                         {
-                            <p><strong>Mô tả: </strong>@item.Description</p>
+                            <strong style="font-size: 16px">@item.Name</strong>
                         }
                         else
                         {
-                            <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
+                            <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
                         }
-                        <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                    </div>
+                    <div class="panel-body">
                         <img src="@item.Hinh" width="100%" />
+                        <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+
                     </div>
                     <div class="panel-footer clearfix">
                         <div class="pull-right">
@@ -277,12 +273,23 @@
 <div class="row">
     @foreach (var item in baiviet)
     {
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Title</strong>
+                <div class="panel panel-heading" style="margin-bottom:0">
+                    @if (item.Title.Length < 40)
+                    {
+                        <strong style="font-size:16px">@item.Title</strong>
+                    }
+                    else
+                    {
+                        <strong style="font-size:16px">@item.Title.Substring(0,40)...</strong>
+                    }
                 </div>
                 <div class="panel-body">
+
+                    <img src="@item.Image" width="100%" height="120px" style="margin-bottom:15px"/>
                     @if (item.ShortContent.Length < 110)
                     {
                         <p><strong>Mô tả: </strong>@item.ShortContent</p>
@@ -290,8 +297,7 @@
                     else
                     {
                         <p><strong>Mô tả: </strong>@item.ShortContent.Substring(0, 110)...</p>
-                    }              
-                    <img src="@item.Image" width="100%" />
+                    }
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
@@ -313,22 +319,22 @@
     <div class="small-container">
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <a href="~/brands/adidas">  <img src="~/Content/images/brand-1.png" alt="Anh-Thuong-Hieu" width="100%"  /></a>
+                <a href="~/home/adidas">  <img src="~/Content/images/brand-1.png" alt="Anh-Thuong-Hieu" width="100%"  /></a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <a href="~/brands/nike"> <img src="~/Content/images/brand-2.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
+                <a href="~/home/nike"> <img src="~/Content/images/brand-2.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <a href="~/brands/mlb"> <img src="~/Content/images/brand-3.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
+                <a href="~/home/mlb"> <img src="~/Content/images/brand-3.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <a href="~/brands/converse"> <img src="~/Content/images/brand-4.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
+                <a href="~/home/converse"> <img src="~/Content/images/brand-4.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <a href="~/brands/vans">  <img src="~/Content/images/brand-5.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
+                <a href="~/home/vans">  <img src="~/Content/images/brand-5.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <a href="~/brands/valentino">  <img src="~/Content/images/brand-6.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
+                <a href="~/home/valentino">  <img src="~/Content/images/brand-6.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
             </div>
         </div>
     </div>

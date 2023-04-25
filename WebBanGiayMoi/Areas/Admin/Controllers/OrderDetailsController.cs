@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,15 +11,19 @@ using WebBanGiayMoi.Models;
 
 namespace WebBanGiayMoi.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class OrderDetailsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/OrderDetails
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            if (page == null)
+                page = 1;
+            int pageSize = 50;
             var orderDetails = db.OrderDetails.Include(o => o.Giay).Include(o => o.Order);
-            return View(orderDetails.ToList());
+            return View(orderDetails.ToList().OrderByDescending(id => id.Id).ToPagedList(page.Value, pageSize));
         }
 
         // GET: Admin/OrderDetails/Details/5

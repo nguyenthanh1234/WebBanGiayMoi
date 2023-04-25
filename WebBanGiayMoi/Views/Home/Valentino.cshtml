@@ -5,27 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!--Sản phẩm-->
-<h3 style="margin-bottom:30px;margin-top:20px;text-align:center"><u><b>Giày thương hiệu Valentino</b></u></h3>
+<h2>Giày thương hiệu Valentino</h2>
+
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Name</strong>
-                </div>
-                <div class="panel-body">
-                    @if (item.Description.Length < 110)
+                <div class="panel panel-heading" style="margin-bottom:0">
+                    @if (item.Name.Length < 40)
                     {
-                        <p><strong>Mô tả: </strong>@item.Description</p>
+                        <strong style="font-size: 16px">@item.Name</strong>
                     }
                     else
                     {
-                        <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
+                        <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
                     }
-                    <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                </div>
+                <div class="panel-body">
                     <img src="@item.Hinh" width="100%" />
+                    <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
