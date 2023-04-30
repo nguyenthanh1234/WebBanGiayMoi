@@ -23,6 +23,15 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel panel-heading" style="margin-bottom:0">
+                    <style>
+                        .panel-heading {
+                            padding: 10px 15px;
+                            border-bottom: 1px solid transparent;
+                            border-top-left-radius: 3px;
+                            border-top-right-radius: 3px;
+                            height: 65px;
+                        }
+                    </style>
                     @if (item.Name.Length < 40)
                     {
                         <strong style="font-size: 16px">@item.Name</strong>
@@ -58,11 +67,10 @@
 <!--Phân trang-->
 <div>
     <div>
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
-        @Model.PageCount
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /@Model.PageCount
     </div>
     <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("sanpham", new { page = page }))
     </div>
 </div>
 <style>

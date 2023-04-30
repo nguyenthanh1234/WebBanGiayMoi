@@ -56,6 +56,7 @@ namespace WebBanGiayMoi.Controllers
         {
 
             Giay vitri = db.Giays.ToList().Find(x => x.Id == id);
+
             return View(vitri);
         }
         public ActionResult HoaDon()
@@ -71,7 +72,7 @@ namespace WebBanGiayMoi.Controllers
         {
             if (page == null)
                 page = 1;
-            int pageSize = 20;
+            int pageSize = 4;
             return View(db.blog.ToList().ToPagedList(page.Value, pageSize));
         }
         public ActionResult DetailNews(int id)
@@ -86,7 +87,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 2).ToList();
-            int pageSize = 20;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -99,7 +100,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 3).ToList();
-            int pageSize = 20;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -112,7 +113,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 4).ToList();
-            int pageSize = 20;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -124,43 +125,30 @@ namespace WebBanGiayMoi.Controllers
         {
             if (page == null)
                 page = 1;
-            int pageSize = 20;
+            int pageSize = 8;
             return View(db.Giays.ToList().Where(m => m.BrandId == 1).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
         public ActionResult Nike(int? page)
         {
             if (page == null)
                 page = 1;
-            int pageSize = 20;
+            int pageSize = 8;
             return View(db.Giays.ToList().Where(m => m.BrandId == 2).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
         public ActionResult Mlb(int? page)
         {
             if (page == null)
                 page = 1;
-            int pageSize = 20;
+            int pageSize = 8;
             return View(db.Giays.ToList().Where(m => m.BrandId == 3).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
         public ActionResult Converse(int? page)
         {
             if (page == null)
                 page = 1;
-            int pageSize = 20;
+            int pageSize = 8;
             return View(db.Giays.ToList().Where(m => m.BrandId == 4).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
-        public ActionResult Vans(int? page)
-        {
-            if (page == null)
-                page = 1;
-            int pageSize = 20;
-            return View(db.Giays.ToList().Where(m => m.BrandId == 5).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
-        }
-        public ActionResult Valentino(int? page)
-        {
-            if (page == null)
-                page = 1;
-            int pageSize = 20;
-            return View(db.Giays.ToList().Where(m => m.BrandId == 6).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
-        }
+    
     }
 }

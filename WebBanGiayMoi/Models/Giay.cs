@@ -29,6 +29,8 @@ namespace WebBanGiayMoi.Models
         public int CategoryId { get; set; }
         public Brand Brand { get; set; }
         public int BrandId { get; set; }
+        
+        public string Size { get; set; }
 
         public static List<Giay> GetAll(string searchKey)
         {
