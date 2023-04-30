@@ -4,7 +4,7 @@
     ViewBag.Title = "Sản Phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title</h2>
+<h2 style="margin-bottom:-20px">@ViewBag.Title</h2>
 <!--Tìm kiếm-->
 @using (Html.BeginForm("SanPham", "Home", FormMethod.Get, new { @class = "form-inline" }))
 {
@@ -12,7 +12,7 @@
         <input type="Text" class="form-control col-md-10" value="@ViewBag.Keyword"
                name="searchString" placeholder="Nhập tên giày cần tìm">
 
-        <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left:10px;">
+        <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left: 10px; background: #f57224; border: 1px solid #f57224 ">
     </div>
     <br>
 }
@@ -22,21 +22,20 @@
     {
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <strong>@item.Name</strong>
-                </div>
-                <div class="panel-body">
-                    @if (item.Description.Length < 110)
+                <div class="panel panel-heading" style="margin-bottom:0">
+                    @if (item.Name.Length < 40)
                     {
-                        <p><strong>Mô tả: </strong>@item.Description</p>
+                        <strong style="font-size: 16px">@item.Name</strong>
                     }
                     else
                     {
-                        <p><strong>Mô tả: </strong>@item.Description.Substring(0, 110)...</p>
-
+                        <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
                     }
-                    <p><strong>Giá: </strong>@item.Gia.ToString("#,##0 VND")</p>
+                </div>
+                <div class="panel-body">
                     <img src="@item.Hinh" width="100%" />
+                    <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+
                 </div>
                 <div class="panel-footer clearfix">
                     <div class="pull-right">

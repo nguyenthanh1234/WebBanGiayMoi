@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,9 +17,12 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Category
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Categories.ToList());
+            if (page == null)
+                page = 1;
+            int pageSize = 50;
+            return View(db.Categories.ToList().OrderByDescending(id => id.Id).ToPagedList(page.Value, pageSize));
         }
 
         // GET: Admin/Category/Details/5

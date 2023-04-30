@@ -17,17 +17,17 @@
             @{
                 var gia = Model.Gia;
             }
-            <p><strong>Giá:</strong> <strong style="color:red;font-size:24px"> @gia.ToString("#,##0 VND")</strong></p>
+            <p><strong style="font-size:15px">Giá:</strong> <strong style="color:#f57224; font-size: 24px"> @gia.ToString("#,##0 VND")</strong></p>
             @{
                 var mota = Model.Description;
             }
-            <p><strong>Mô tả:</strong> <br>@Html.Raw(mota.Replace("\n", "</br>")))</p>
+            <p><strong style="font-size:15px">Mô tả:</strong> <br>@Html.Raw(mota.Replace("\n", "</br>")))</p>
 
             @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
             {
                 int id = Model.Id;
 
-                <strong>Số lượng: </strong>
+                <strong style="font-size:15px">Số lượng: </strong>
                 <input type="number" name="soLuong" value="1" required style="margin-bottom:20px" min="1" max="100"  />
                 <input type="hidden" value="@Model.Id" name="idpro" required />
                 <br />

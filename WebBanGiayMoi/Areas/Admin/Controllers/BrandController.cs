@@ -1,11 +1,14 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebBanGiayMoi.Models;
 
 namespace WebBanGiayMoi.Areas.Admin.Controllers
@@ -16,9 +19,12 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Brands
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Brands.ToList());
+            if (page == null)
+                page = 1;
+            int pageSize = 50;
+            return View(db.Brands.ToList().OrderByDescending(id => id.Id).ToPagedList(page.Value, pageSize));
         }
 
         // GET: Admin/Brands/Details/5

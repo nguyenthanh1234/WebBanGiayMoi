@@ -1,12 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebBanGiayMoi.Models;
 using static System.Net.Mime.MediaTypeNames;
@@ -19,10 +22,13 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/News
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            if (page == null)
+                page = 1;
+            int pageSize = 50;
             var blog = db.blog.Include(n => n.Topic);
-            return View(blog.ToList());
+            return View(blog.ToList().OrderByDescending(id => id.ID).ToPagedList(page.Value, pageSize));
         }
 
         // GET: Admin/News/Details/5

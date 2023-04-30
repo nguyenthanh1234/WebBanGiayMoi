@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,9 +15,12 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/Home
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Giays.ToList().OrderByDescending(s => s.Id));
+            if (page == null)
+                page = 1;
+            int pageSize = 50;
+            return View(db.Giays.ToList().OrderByDescending(s => s.Id).ToPagedList(page.Value, pageSize));
         }
 
         // GET: Giays/Details/5
