@@ -35,7 +35,7 @@ namespace WebBanGiayMoi.Controllers
             ViewBag.Keyword = searchString;
             if (page == null)
                 page = 1;
-            int pageSize = 20;
+            int pageSize = 8;
             return View(Giay.GetAll(searchString).ToPagedList(page.Value, pageSize));
         }
         public ActionResult About()

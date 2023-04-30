@@ -21,7 +21,7 @@
             @{
                 var mota = Model.Description;
             }
-            <p><strong style="font-size:15px">Mô tả:</strong> <br>@Html.Raw(mota.Replace("\n", "</br>")))</p>
+            <p><strong style="font-size:15px">Mô tả:</strong> <br>@Html.Raw(mota.Replace("\n", "</br>"))</p>
 
             @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
             {
