@@ -32,7 +32,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Order.OrderDate)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.PhuongThucTT)
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -62,6 +64,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Order.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.PhuongThucTT)
                 </td>
             </tr>
         }

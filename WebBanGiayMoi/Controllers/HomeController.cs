@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using PayPal.Api;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,17 +18,13 @@ namespace WebBanGiayMoi.Controllers
     public class HomeController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        public ActionResult Index(int? page, string searchString)
+        public ActionResult Index(int? page)
         {
-            ViewBag.Keyword = searchString;
             if (page == null)
                 page = 1;
             int pageSize = 8;
             ViewBag.HienThiBaiViet = db.blog.ToList().OrderByDescending(m => m.ID).ToPagedList(1, 4);
-            ViewBag.HienThiGiayNu = db.Giays.ToList().Where(m => m.CategoryId == 1).OrderByDescending(m => m.Id).ToPagedList(1, 4);
-            ViewBag.HienThiGiayNam = db.Giays.ToList().Where(m => m.CategoryId == 2).OrderByDescending(m => m.Id).ToPagedList(1, 4);
-            ViewBag.HienThiGiayTreEm = db.Giays.ToList().Where(m => m.CategoryId == 3).OrderByDescending(m => m.Id).ToPagedList(1, 4);
-            return View(Giay.GetAll(searchString).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
+            return View(db.Giays.ToList().OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
             
         }
         public ActionResult SanPham(int? page, string searchString)
@@ -55,7 +52,7 @@ namespace WebBanGiayMoi.Controllers
         public ActionResult Detail(int id)
         {
 
-            Giay vitri = db.Giays.ToList().Find(x => x.Id == id);
+            Giay vitri = db.Giays.Include(o => o.Category).Include(o => o.Brand).ToList().Find(x => x.Id == id);
 
             return View(vitri);
         }
@@ -72,8 +69,8 @@ namespace WebBanGiayMoi.Controllers
         {
             if (page == null)
                 page = 1;
-            int pageSize = 4;
-            return View(db.blog.ToList().ToPagedList(page.Value, pageSize));
+            int pageSize = 8;
+            return View(db.blog.ToList().OrderByDescending(x => x.ID).ToPagedList(page.Value, pageSize));
         }
         public ActionResult DetailNews(int id)
         {
@@ -87,7 +84,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 2).ToList();
-            int pageSize = 4;
+            int pageSize = 8;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -100,7 +97,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 3).ToList();
-            int pageSize = 4;
+            int pageSize = 8;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -113,7 +110,7 @@ namespace WebBanGiayMoi.Controllers
             if (page == null) page = 1;
 
             var topic = db.blog.Where(s => s.TopicID == 4).ToList();
-            int pageSize = 4;
+            int pageSize = 8;
             int pageNumber = (page ?? 1);
             if (topic == null)
             {
@@ -149,6 +146,7 @@ namespace WebBanGiayMoi.Controllers
             int pageSize = 8;
             return View(db.Giays.ToList().Where(m => m.BrandId == 4).OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
         }
+
     
     }
 }

@@ -15,7 +15,9 @@
                 <th>Product Name</th>
                 <th>Image</th>
                 <th>Price</th>
+   
                 <th>Quantity</th>
+
                 <th>Sum</th>
                 <th>Xóa</th>
             </tr>
@@ -26,7 +28,15 @@
                 double total = Convert.ToDouble(item._shopping_product.Gia * item._shopping_quantity);
                 <tr>
                     <td>
-                        @Html.DisplayFor(model => item._shopping_product.Name)
+                        @if (item._shopping_product.Name.Length < 50)
+                        {
+                            <p >@item._shopping_product.Name</p>
+                        }
+                        else
+                        {
+                    <p>@item._shopping_product.Name.Substring(0, 50)...</p>
+                        }
+                  
                     </td>
                     <td>
                         <img src="@Url.Content(item._shopping_product.Hinh)" style="width:100px; height:100px" />
@@ -45,7 +55,7 @@
 
                     </td>
                     <td>
-                        Total: @total
+                        Total: @total.ToString("#,##0")
                     </td>
                     <td>
                         <a href="/ShoppingCart/RemoveCart/@item._shopping_product.Id">Remove</a>
@@ -55,7 +65,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="10" style="text-align:right; font-size:18px; color:red; ">Tổng tất cả: @Model.Total_Money()</td>
+                <td colspan="10" style="text-align:right; font-size:18px; color:red; ">Tổng tất cả: @Model.Total_Money().ToString("#,##0 VNĐ")</td>
             </tr>
             <tr>
                 <td style="text-align: left; font-size: 16px"><b>Thông tin khách hàng: </b></td>
@@ -68,69 +78,21 @@
             {
                 <tr>
 
-                    <td colspan="10" style="text-align:right; font-size:18px; border-top:none">
-                        <input type="submit" value="Đặt hàng bằng tiền mặt" class="btn btn-success" />
-                        @*<img src="~/Content/images/paypal-button.png" width="180" id="paypal-button-container" />*@
+                    <td colspan="6" style="text-align:right; font-size:18px; border-top:none">
+                        <input type="submit" value="Thanh toán khi nhận hàng" class="btn btn-success" />
                     </td>
                 </tr>
-                <tr >
-                    <td colspan="4" ></td>
-                    <td colspan="2" id="paypal-button-container">
-                    </td>
+                <tr>
+                     <td colspan="6" style="text-align: right; border-top: none"><a href="/shoppingcart/PaymentWithPaypal"><img src="~/Content/images/paypal-button.png" width="187" /></a></td>            
                 </tr>
-        }
-            </tfoot>
-        </table>
+            }
+        </tfoot>
+    </table>
     <a href="/home/index" class="btn btn-primary">Tiếp tục mua sắm</a>
 }
-<!-- Replace "test" with your own sandbox Business account app client ID -->
-<script src="https://www.paypal.com/sdk/js?client-id=AZbs_4BCGG3UOqwnTaRn59l_5gLTyoX5mt_Ub0RxduIJbdX1HBkYjsZ2ORybvluv1lKhN3Wm46qgLkvF&currency=USD"></script>
 
-<script>
-    paypal.Buttons({
-        // Order is created on the server and the order id is returned
-        createOrder() {
-            return fetch("/my-server/create-paypal-order", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                // use the "body" param to optionally pass additional order information
-                // like product skus and quantities
-                body: JSON.stringify({
-                    cart: [
-                        {
-                            sku: "",
-                            quantity: "",
-                        },
-                    ],
-                }),
-            })
-                .then((response) => response.json())
-                .then((order) => order.id);
-        },
-        // Finalize the transaction on the server after payer approval
-        onApprove(data) {
-            return fetch("/my-server/capture-paypal-order", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    orderID: data.orderID
-                })
-            })
-                .then((response) => response.json())
-                .then((orderData) => {
-                    // Successful capture! For dev/demo purposes:
-                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    const transaction = orderData.purchase_units[0].payments.captures[0];
-                    alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-                    // When ready to go live, remove the alert and show a success message within this page. For example:
-                    // const element = document.getElementById('paypal-button-container');
-                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                    // Or go to another URL:  window.location.href = 'thank_you.html';
-                });
-        }
-    }).render('#paypal-button-container');
-</script>
+
+
+
+
+

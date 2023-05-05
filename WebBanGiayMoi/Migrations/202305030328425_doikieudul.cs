@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class doikieuint : DbMigration
+    public partial class doikieudul : DbMigration
     {
         public override void Up()
         {
@@ -13,8 +13,8 @@
         
         public override void Down()
         {
-            AlterColumn("dbo.OrderDetails", "UnitPriceSale", c => c.Single(nullable: false));
-            AlterColumn("dbo.Giays", "Gia", c => c.Single(nullable: false));
+            AlterColumn("dbo.OrderDetails", "UnitPriceSale", c => c.Double(nullable: false));
+            AlterColumn("dbo.Giays", "Gia", c => c.Double(nullable: false));
         }
     }
 }

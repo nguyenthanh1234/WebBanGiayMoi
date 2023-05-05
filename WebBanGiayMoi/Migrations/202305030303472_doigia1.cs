@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class themphone : DbMigration
+    public partial class doigia1 : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Orders", "PhoneKH", c => c.String(nullable: false));
+            AlterColumn("dbo.OrderDetails", "UnitPriceSale", c => c.Double(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Orders", "PhoneKH");
+            AlterColumn("dbo.OrderDetails", "UnitPriceSale", c => c.Int(nullable: false));
         }
     }
 }

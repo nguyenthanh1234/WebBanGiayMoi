@@ -21,22 +21,19 @@
             @{
                 var mota = Model.Description;
             }
-            <p style="margin: 30px 0 30px 0"><strong style="font-size:15px">Mô tả:</strong> <br>@Html.Raw(mota.Replace("\n", "</br>"))</p>
-
-
-
+            <div style="margin: 30px 0 5px 0">
+                <strong style="font-size:15px">Mô tả:</strong> 
+                <br>@Html.Raw(mota.Replace("\n", "</br>"))
+            </div>
+            <div><strong>Thương hiệu: </strong> @Model.Brand.Name</div>
+            <div style="margin:5px 0 5px 0"><strong>Danh mục: </strong>@Model.Category.Name</div>
             @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
             {
                 int id = Model.Id;
 
                 <strong style="font-size:15px">Số lượng: </strong>
-                <input type="number" name="soLuong" value="1" required style="margin-bottom:20px" min="1" max="100" />
+                <input type="number" name="soLuong" value="1" required  min="1" max="100" />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Size_ID, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("Size_ID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Size_ID, "", new { @class = "text-danger" })
-                    </div>
                 </div>
                 <input type="hidden" value="@Model.Id" name="idpro" required />
                 <br />
@@ -47,6 +44,4 @@
         </div>
     </div>
 </div>
-<h2>Chi tiết</h2>
-@Html.Raw(Model.Content)
 

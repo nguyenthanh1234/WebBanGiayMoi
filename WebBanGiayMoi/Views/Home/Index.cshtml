@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Home Page";
     IEnumerable<WebBanGiayMoi.Models.News> baiviet = ViewBag.HienThiBaiViet as IEnumerable<WebBanGiayMoi.Models.News>;
-    IEnumerable<WebBanGiayMoi.Models.Giay> GiayNu = ViewBag.HienThiGiayNu as IEnumerable<WebBanGiayMoi.Models.Giay>;
-    IEnumerable<WebBanGiayMoi.Models.Giay> GiayNam = ViewBag.HienThiGiayNam as IEnumerable<WebBanGiayMoi.Models.Giay>;
-    IEnumerable<WebBanGiayMoi.Models.Giay> GiayTreEm = ViewBag.HienThiGiayTreEm as IEnumerable<WebBanGiayMoi.Models.Giay>;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!--Banner-->
 <div class="row">
-    <img src="~/Content/images/banner.jpg" width="100%" height="auto" />
+    <img src="~/Content/images/banner.jpg" width="100%"  />
 </div>
 <!--End - Banner-->
 <!--Danh mục sản phẩm-->
@@ -24,28 +21,13 @@
          <a href="~/home/nike"> <img src="~/Content/images/brand-2.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <a href="~/home/nike"> <img src="~/Content/images/brand-3.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
+        <a href="~/home/mlb"> <img src="~/Content/images/brand-3.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <a href="~/home/nike"> <img src="~/Content/images/brand-4.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
+        <a href="~/home/converse"> <img src="~/Content/images/brand-4.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
     </div>
 </div>
 <!--End - Danh mục sản phẩm-->
-<!--Tìm kiếm-->
-
-@*<div class="row">
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" }))
-    {
-        <div class="form-group form-inline" style="display: flex; margin-top:30px">
-            <input type="Text" class="form-control col-md-10" value="@ViewBag.Keyword"
-                   name="searchString" placeholder="Nhập tên giày cần tìm">
-
-            <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left: 10px; background: #f57224; border:1px solid #f57224 ">
-        </div>
-        <br>
-    }
-</div>*@
-<!--Kết thúc - tìm kiếm-->
 <!--Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:20px;text-align:center"><u><b>Hàng mới về</b></u></h3>
 <div class="row">
@@ -138,146 +120,7 @@
     }
 </style>
 <!--End - Sản phẩm-->
-@*<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày nữ</b></u></h3>*@
-<!--Sản phẩm-->
-<!--<div class="row">
-    @foreach (var item in GiayNu)
-    {
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel panel-heading" style="margin-bottom:0">
-                        @if (item.Name.Length < 40)
-                        {
-                            <strong style="font-size: 16px">@item.Name</strong>
-                        }
-                        else
-                        {
-                            <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
-                        }
-                    </div>
-                    <div class="panel-body">
-                        <img src="@item.Hinh" width="100%" />
-                        <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
 
-                    </div>
-                    <div class="panel-footer clearfix">
-                        <div class="pull-right">
-                            @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
-                            {
-                                <input type="hidden" name="soLuong" value="1" required" />
-                                <input type="hidden" value="@item.Id" name="idpro" required />
-                                <input type="submit" value="Add to card" class="btn btn-success" />
-                                @Html.ActionLink("Đọc thêm...", "Detail", new
-                               {
-                                   id = item.Id
-                               }, new { @class = "btn btn-default" })
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-    }
-</div>-->
-
-<!--End - Sản phẩm-->
-<!--<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày nam</b></u></h3>-->
-<!--Sản phẩm-->
-<!--<div class="row">
-    @foreach (var item in GiayNam)
-    {
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel panel-heading" style="margin-bottom:0">
-                        <style>
-                            .panel-heading {
-                                padding: 10px 15px;
-                                border-bottom: 1px solid transparent;
-                                border-top-left-radius: 3px;
-                                border-top-right-radius: 3px;
-                                height: 65px;
-                            }
-                        </style>                        @if (item.Name.Length < 40)
-                        {
-                            <strong style="font-size: 16px">@item.Name</strong>
-                        }
-                        else
-                        {
-                            <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
-                        }
-                        <br style="margin-bottom: 20px " />
-                    </div>
-                    <div class="panel-body">
-                        <img src="@item.Hinh" width="100%" />
-                        <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
-
-                    </div>
-                    <div class="panel-footer clearfix">
-                        <div class="pull-right">
-                            @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
-                            {
-                                <input type="hidden" name="soLuong" value="1" required" />
-                                <input type="hidden" value="@item.Id" name="idpro" required />
-                                <input type="submit" value="Add to card" class="btn btn-success" />
-                                @Html.ActionLink("Đọc thêm...", "Detail", new
-                               {
-                                   id = item.Id
-                               }, new { @class = "btn btn-default" })
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-    }
-</div>-->
-
-<!--End - Sản phẩm-->
-<!--<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Giày trẻ em</b></u></h3>-->
-<!--Sản phẩm-->
-@*<div class="row">*@
-    @*@foreach (var item in GiayTreEm)
-    {
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel panel-heading" style="margin-bottom:0">
-                        @if (item.Name.Length < 40)
-                        {
-                            <strong style="font-size: 16px">@item.Name</strong>
-                        }
-                        else
-                        {
-                            <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
-                        }
-                    </div>
-                    <div class="panel-body">
-                        <img src="@item.Hinh" width="100%" />
-                        <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
-
-                    </div>
-                    <div class="panel-footer clearfix">
-                        <div class="pull-right">
-                            @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
-                            {
-                                <input type="hidden" name="soLuong" value="1" required" />
-                                <input type="hidden" value="@item.Id" name="idpro" required />
-                                <input type="submit" value="Add to card" class="btn btn-success" />
-                                @Html.ActionLink("Đọc thêm...", "Detail", new
-                               {
-                                   id = item.Id
-                               }, new { @class = "btn btn-default" })
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-    }
-
-
-
-</div>*@
-<!--End - Sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>WHAT'S HOT?</b></u></h3>
 <!-- - Tin tức-->
 <div class="row">
@@ -287,13 +130,10 @@
 
 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="panel panel-default" style="height:356px">
-                @*<div class="panel panel-heading" style="margin-bottom:0">
-                    
-                </div>*@
                 <div class="panel-body">
 
-                    <img src="@item.Image" width="100%" height="120px" style="margin-bottom:15px" />
-                    @*<div>
+                    <img src="@item.Image" width="100%" height="130px" style="margin-bottom:15px" />
+                    <div style="margin-bottom:5px">
                         @if (item.Title.Length < 40)
                         {
                             <strong style="font-size:16px">@item.Title</strong>
@@ -302,9 +142,7 @@
                         {
                             <strong style="font-size:16px">@item.Title.Substring(0, 40)...</strong>
                         }
-                    </div>*@
-                    <strong>@item.Title</strong>
-                   
+                    </div>                   
                     @if (item.ShortContent.Length < 110)
                     {
                         <p>@item.ShortContent</p>

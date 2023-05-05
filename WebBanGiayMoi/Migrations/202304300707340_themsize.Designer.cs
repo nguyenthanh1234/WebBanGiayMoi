@@ -7,13 +7,13 @@ namespace WebBanGiayMoi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class themdata : IMigrationMetadata
+    public sealed partial class themsize : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(themdata));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(themsize));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304190838305_themdata"; }
+            get { return "202304300707340_themsize"; }
         }
         
         string IMigrationMetadata.Source

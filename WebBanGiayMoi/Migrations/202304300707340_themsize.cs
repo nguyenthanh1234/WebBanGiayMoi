@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class sua : DbMigration
+    public partial class themsize : DbMigration
     {
         public override void Up()
         {
-            AlterColumn("dbo.Giays", "Gia", c => c.Int(nullable: false));
+            AddColumn("dbo.Giays", "Size", c => c.String());
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Giays", "Gia", c => c.Single(nullable: false));
+            DropColumn("dbo.Giays", "Size");
         }
     }
 }

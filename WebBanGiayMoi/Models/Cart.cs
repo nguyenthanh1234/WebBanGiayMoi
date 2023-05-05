@@ -58,7 +58,12 @@ namespace WebBanGiayMoi.Models
         //Tinh tong tien
         public double Total_Money()
         {
-            var total = items.Sum(s => s._shopping_product.Gia * s._shopping_quantity);
+            var total = items.Sum(s => Math.Round(s._shopping_product.Gia,2) * s._shopping_quantity);
+            return (double)total;
+        }
+        public double Total_MoneyUSD()
+        {
+            var total = items.Sum(s => Math.Round(s._shopping_product.Gia / 23500,2) * s._shopping_quantity);
             return (double)total;
         }
 

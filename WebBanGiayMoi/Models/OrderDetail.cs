@@ -18,7 +18,7 @@ namespace WebBanGiayMoi.Models
         [Required]
         public int OrderId { get; set; }
         [Display(Name = "Giá mặt hàng")]
-        public int UnitPriceSale { get; set; }
+        public double UnitPriceSale { get; set; }
         [Display(Name = "Số lượng")]
         public int QuantitySale { get; set; }
 

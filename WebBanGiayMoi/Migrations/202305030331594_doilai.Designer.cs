@@ -7,13 +7,13 @@ namespace WebBanGiayMoi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class kieudlieu : IMigrationMetadata
+    public sealed partial class doilai : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(kieudlieu));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(doilai));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304210927294_kieudlieu"; }
+            get { return "202305030331594_doilai"; }
         }
         
         string IMigrationMetadata.Source

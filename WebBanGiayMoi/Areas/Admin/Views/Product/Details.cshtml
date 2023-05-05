@@ -17,14 +17,17 @@
             @{
                 var gia = Model.Gia;
             }
-            <p><strong style="font-size:15px">Giá:</strong> <strong style="color:#f57224; font-size: 24px"> @gia.ToString("#,##0 VND")</strong></p>
+            <strong style="color:#f57224; font-size: 24px"> @gia.ToString("#,##0 VND")</strong>
             @{
                 var mota = Model.Description;
             }
-            <p><strong style="font-size:15px">Mô tả:</strong> <br>@Html.Raw(mota.Replace("\n", "</br>")))</p>
+            <div style="margin: 30px 0 5px 0">
+                <strong style="font-size:15px">Mô tả:</strong>
+                <br>@Html.Raw(mota.Replace("\n", "</br>"))
+            </div>
+            <div><strong>Thương hiệu: </strong> @Model.Brand.Name</div>
+            <div style="margin:5px 0 5px 0"><strong>Danh mục: </strong>@Model.Category.Name</div>        
         </div>
     </div>
 </div>
-<h2>Chi tiết</h2>
-@Html.Raw(Model.Content)
 

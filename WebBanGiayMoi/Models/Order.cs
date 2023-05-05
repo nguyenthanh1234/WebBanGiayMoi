@@ -21,6 +21,10 @@ namespace WebBanGiayMoi.Models
         [Display(Name = "Ngày đặt")]
         [Required]
         public DateTime OrderDate { get; set; }
+
+        [Display(Name = "Phương thức thanh toán")]
+        [Required]
+        public string PhuongThucTT { get; set; }
         [Required]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

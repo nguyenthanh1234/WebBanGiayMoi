@@ -30,7 +30,7 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Giay giay = db.Giays.Find(id);
+            Giay giay = db.Giays.Include(o => o.Category).Include(o => o.Brand).ToList().Find(x => x.Id == id);
             if (giay == null)
             {
                 return HttpNotFound();

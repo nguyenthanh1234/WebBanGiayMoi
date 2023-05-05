@@ -17,7 +17,7 @@ namespace WebBanGiayMoi.Models
         [Display(Name = "Mô tả ngắn")]
         public string Description { get; set; }
         [Display(Name = "Giá")]
-        public int Gia { get; set; }
+        public double Gia { get; set; }
         //[Display(Name = "Số lượng")]
         //public int SoLuong { get; set; }
         [Display(Name = "Ảnh đại diện")]
