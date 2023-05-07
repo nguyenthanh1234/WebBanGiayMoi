@@ -21,24 +21,39 @@
             @{
                 var mota = Model.Description;
             }
-            <div style="margin: 30px 0 5px 0">
-                <strong style="font-size:15px">Mô tả:</strong> 
-                <br>@Html.Raw(mota.Replace("\n", "</br>"))
+            <div style="margin: 15px 0 5px 0">
+                <strong style="font-size:14px">Mô tả:</strong>
+                @Html.Raw(mota.Replace("\n", "</br>"))
             </div>
-            <div><strong>Thương hiệu: </strong> @Model.Brand.Name</div>
-            <div style="margin:5px 0 5px 0"><strong>Danh mục: </strong>@Model.Category.Name</div>
+            <div><strong style="font-size:14px">Thương hiệu: </strong> @Model.Brand.Name</div>
+            <div style="margin:5px 0 5px 0"><strong style="font-size:15px">Danh mục: </strong>@Model.Category.Name</div>
             @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
             {
                 int id = Model.Id;
-
-                <strong style="font-size:15px">Số lượng: </strong>
-                <input type="number" name="soLuong" value="1" required  min="1" max="100" />
-                <div class="form-group">
-                </div>
+                    <strong style="font-size:14px">Size: </strong>
+                    <input type="radio" name="size" value="35" required>
+                    <label>35 </label>
+                    <input type="radio" name="size" value="36">
+                    <label>36 </label>
+                    <input type="radio" name="size" value="37">
+                    <label>37 </label>
+                    <input type="radio" name="size" value="38">
+                    <label>38 </label>
+                    <input type="radio" name="size" value="39">
+                    <label>39 </label>
+                    <input type="radio" name="size" value="40">
+                    <label>40 </label>
+                    <input type="radio" name="size" value="41">
+                    <label>41 </label>
+                <br />
+                <strong style="font-size:14px">Số lượng: </strong>
+                <input type="number" name="soLuong" value="1" required min="1" max="100" />           
                 <input type="hidden" value="@Model.Id" name="idpro" required />
                 <br />
-                <input type="submit" value="Buy" class="btn btn-success" />
-                @Html.ActionLink("Back", "Index", "", new { @class = "btn btn-info" })
+                <div style="margin-top:15px">
+                    <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-success" />
+                  
+                </div>
             }
 
         </div>

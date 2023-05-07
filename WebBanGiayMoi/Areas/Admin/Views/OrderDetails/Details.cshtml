@@ -8,44 +8,70 @@
 <h2>Details</h2>
 
 <div>
-    <h4>OrderDetail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Order.ApplicationUser.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.ApplicationUser.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.ApplicationUser.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.ApplicationUser.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.ApplicationUser.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.ApplicationUser.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.ApplicationUser.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.ApplicationUser.Phone)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Giay.Name)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Giay.Name)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Order.Descriptions)
+            @Html.DisplayNameFor(model => model.Giay.Gia)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Order.Descriptions)
+            @Html.DisplayFor(model => model.Giay.Gia)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.UnitPriceSale)
+            @Html.DisplayNameFor(model => model.Size)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.UnitPriceSale)
+            @Html.DisplayFor(model => model.Size)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.QuantitySale)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.QuantitySale)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.PhuongThucTT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.PhuongThucTT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.OrderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.OrderDate)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

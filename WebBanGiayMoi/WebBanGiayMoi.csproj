@@ -218,6 +218,14 @@
     <Compile Include="Migrations\202305030331594_doilai.designer.cs">
       <DependentUpon>202305030331594_doilai.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305062040479_themsize1.cs" />
+    <Compile Include="Migrations\202305062040479_themsize1.designer.cs">
+      <DependentUpon>202305062040479_themsize1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305062043163_themsize2.cs" />
+    <Compile Include="Migrations\202305062043163_themsize2.designer.cs">
+      <DependentUpon>202305062043163_themsize2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -381,6 +389,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305030331594_doilai.resx">
       <DependentUpon>202305030331594_doilai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305062040479_themsize1.resx">
+      <DependentUpon>202305062040479_themsize1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305062043163_themsize2.resx">
+      <DependentUpon>202305062043163_themsize2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

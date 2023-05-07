@@ -2,6 +2,7 @@
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
@@ -36,7 +37,7 @@ namespace WebBanGiayMoi.Controllers
             var pro = _db.Giays.SingleOrDefault(x => x.Id == id);
             if (pro != null)
             {
-                GetCart().Add(pro, int.Parse(form["soLuong"]));
+                GetCart().Add(pro, int.Parse(form["soLuong"]), int.Parse(form["size"]));
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
@@ -62,7 +63,7 @@ namespace WebBanGiayMoi.Controllers
             if (form["Quantity"] != "")
             {
                 int quantity = int.Parse(form["Quantity"]);
-                cart.Update_Quantity_Shopping(id_pro, quantity);
+                cart.Update_Quantity_Shopping(id_pro, quantity, int.Parse(form["Size"]));
                 return RedirectToAction("ShowToCart", "ShoppingCart");
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
@@ -102,6 +103,10 @@ namespace WebBanGiayMoi.Controllers
             try
             {
                 Cart cart = Session["Cart"] as Cart;
+                if(cart.Items.Count() == 0)
+                {
+                    return RedirectToAction("index", "home");
+                }
                 Models.Order _order = new Models.Order();
                 _order.OrderDate = DateTime.Now;
                 if (Session["Profile"] == null)
@@ -129,6 +134,7 @@ namespace WebBanGiayMoi.Controllers
                     _order_Detail.GiayId = item._shopping_product.Id;
                     _order_Detail.UnitPriceSale = item._shopping_product.Gia;
                     _order_Detail.QuantitySale = item._shopping_quantity;
+                    _order_Detail.Size = item._shopping_size;
                     _db.OrderDetails.Add(_order_Detail);
                 }
                 _db.SaveChanges();
@@ -203,6 +209,7 @@ namespace WebBanGiayMoi.Controllers
             try
             {
                 Cart cart = Session["Cart"] as Cart;
+               
                 Models.Order _order = new Models.Order();
                 _order.OrderDate = DateTime.Now;
                 if (Session["Profile"] == null)
@@ -222,6 +229,7 @@ namespace WebBanGiayMoi.Controllers
                     _order_Detail.GiayId = item._shopping_product.Id;
                     _order_Detail.UnitPriceSale = item._shopping_product.Gia;
                     _order_Detail.QuantitySale = item._shopping_quantity;
+                    _order_Detail.Size = item._shopping_size;
                     _db.OrderDetails.Add(_order_Detail);
                 }
                 _db.SaveChanges();

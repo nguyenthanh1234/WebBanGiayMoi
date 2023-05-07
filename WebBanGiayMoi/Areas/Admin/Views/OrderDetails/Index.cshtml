@@ -6,31 +6,39 @@
 }
 
 <h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             ID khách hàng
         </th>
         <th>
+            Tên khách hàng
+        </th>
+        <th>
             Địa chỉ
 
         </th>
         <th>
-           Số điện thoại
+            Số điện thoại
 
         </th>
         <th>
-           Tên sản phẩm
+            Tên sản phẩm
         </th>
         <th>
             Giá
         </th>
         <th>
+            Size
+        </th>
+        <th>
             Số lượng
+        </th>
+        <th>
+            Phương thức thanh toán
+        </th>
+        <th>
+            Ngày đặt
         </th>
         <th>
             Tác vụ
@@ -44,6 +52,9 @@
                 @Html.DisplayFor(modelItem => item.Order.ApplicationUserId)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Order.ApplicationUser.Name)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Order.Descriptions)
             </td>
             <td>
@@ -52,14 +63,23 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Giay.Name)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.UnitPriceSale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.QuantitySale)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.DisplayFor(modelItem => item.Order.PhuongThucTT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderDate)
+            </td>
+            <td>
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>

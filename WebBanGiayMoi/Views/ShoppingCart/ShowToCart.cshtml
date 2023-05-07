@@ -15,9 +15,8 @@
                 <th>Product Name</th>
                 <th>Image</th>
                 <th>Price</th>
-   
+                <th>Size</th>
                 <th>Quantity</th>
-
                 <th>Sum</th>
                 <th>Xóa</th>
             </tr>
@@ -30,13 +29,13 @@
                     <td>
                         @if (item._shopping_product.Name.Length < 50)
                         {
-                            <p >@item._shopping_product.Name</p>
+                            <p>@item._shopping_product.Name</p>
                         }
                         else
                         {
-                    <p>@item._shopping_product.Name.Substring(0, 50)...</p>
+                            <p>@item._shopping_product.Name.Substring(0, 50)...</p>
                         }
-                  
+
                     </td>
                     <td>
                         <img src="@Url.Content(item._shopping_product.Hinh)" style="width:100px; height:100px" />
@@ -45,10 +44,14 @@
                         @Html.DisplayFor(model => item._shopping_product.Gia)
                     </td>
                     <td>
+                        @Html.DisplayFor(model => item._shopping_size)
+                    </td>
+                    <td>
 
                         @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
                         {
                             <input type="hidden" value="@item._shopping_product.Id" name="Id_Product" />
+                            <input type="hidden" value="@item._shopping_size" name="Size" />
                             <input type="number" value="@item._shopping_quantity" name="Quantity" min="1" max="100" />
                             <input type="submit" value="Update Quantity" />
                         }
@@ -65,25 +68,25 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="10" style="text-align:right; font-size:18px; color:red; ">Tổng tất cả: @Model.Total_Money().ToString("#,##0 VNĐ")</td>
+                <td colspan="7" style="text-align:right; font-size:18px; color:red; ">Tổng tất cả: @Model.Total_Money().ToString("#,##0 VNĐ")</td>
             </tr>
             <tr>
                 <td style="text-align: left; font-size: 16px"><b>Thông tin khách hàng: </b></td>
                 <td style="text-align:left;font-size: 16px">@user.Name</td>
                 <td style="text-align:left;font-size: 16px">@user.Phone</td>
-                <td colspan="2" style="text-align:left;font-size: 16px">@user.Address</td>
+                <td colspan="3" style="text-align:left;font-size: 16px">@user.Address</td>
                 <td style="text-align:right;font-size: 16px">@Html.ActionLink("Sửa", "EditProfile", "Account")</td>
-            </tr>
+            </tr>                
             @using (Html.BeginForm("CheckOut", "ShoppingCart"))
             {
                 <tr>
 
-                    <td colspan="6" style="text-align:right; font-size:18px; border-top:none">
+                    <td colspan="7" style="text-align:right; font-size:18px; border-top:none">
                         <input type="submit" value="Thanh toán khi nhận hàng" class="btn btn-success" />
                     </td>
                 </tr>
                 <tr>
-                     <td colspan="6" style="text-align: right; border-top: none"><a href="/shoppingcart/PaymentWithPaypal"><img src="~/Content/images/paypal-button.png" width="187" /></a></td>            
+                     <td colspan="7" style="text-align: right; border-top: none"><a href="/shoppingcart/PaymentWithPaypal"><img src="~/Content/images/paypal-button.png" width="187" /></a></td>            
                 </tr>
             }
         </tfoot>

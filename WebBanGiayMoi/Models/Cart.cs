@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PayPal.Api;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,44 +15,62 @@ namespace WebBanGiayMoi.Models
 
         //So luong san pham trong gio hang
         public int _shopping_quantity { get; set; }
+        public int _shopping_size { get; set; }
     }
     //Giỏ hàng
     public class Cart
     {
         List<CartItem> items = new List<CartItem>();
         public IEnumerable<CartItem> Items { get { return items; } }
-        public void Add(Giay _pro, int _quantity)
+   
+        public void Add(Giay _pro, int _quantity, int _size)
         {
             //Neu them 2 lan vao gio hang cung 1 san pham
             var item = items.FirstOrDefault(s => s._shopping_product.Id == _pro.Id);
+            int flag = 0;
             if (item == null)
             {
                 items.Add(new CartItem
                 {
                     _shopping_product = _pro,
-                    _shopping_quantity = _quantity
+                    _shopping_quantity = _quantity,
+                    _shopping_size = _size
                 });
             }
-            //Truoc hop lan dau tien them san pham
             else
             {
-                item._shopping_quantity += _quantity;
+                foreach(var itemKS in Items.ToList())
+                {
+                    if (itemKS._shopping_size == _size)
+                    {
+                        itemKS._shopping_quantity += _quantity;
+                        flag = 1;
+                    }               
+                }
+               if(flag != 1) { 
+                        items.Add(new CartItem
+                        {
+                            _shopping_product = _pro,
+                            _shopping_quantity = _quantity,
+                            _shopping_size = _size
+                        });
+                }
             }
+            //Truoc hop lan dau tien them san pham
+                  
         }
         //Cap nhap so luong
-        public void Update_Quantity_Shopping(int id, int _quantity)
+        public void Update_Quantity_Shopping(int id, int _quantity, int _size)
         {
-            var item = items.Find(s => s._shopping_product.Id == id);
-            if (_quantity < 0)
+            var item = items.Find(s => s._shopping_product.Id == id && s._shopping_size == _size);
+            if (_quantity < 1)
             {
 
             }
             else
-            {
-                if (item != null)
-                {
-                    item._shopping_quantity = _quantity;
-                }
+            {                
+                item._shopping_quantity = _quantity;                 
+
             }
         }
 

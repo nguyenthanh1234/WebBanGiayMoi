@@ -4,53 +4,39 @@
     ViewBag.Title = "Adidas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    a.ShowSP:hover {
+        color: transparent !important;
+    }
+</style>
 <!--Sản phẩm-->
 <h2>ADIDAS</h2>
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel panel-heading" style="margin-bottom:0">
-                    <style>
-                        .panel-heading {
-                            padding: 10px 15px;
-                            border-bottom: 1px solid transparent;
-                            border-top-left-radius: 3px;
-                            border-top-right-radius: 3px;
-                            height: 65px;
-                        }
-                    </style>
-                    @if (item.Name.Length < 40)
-                    {
-                        <strong style="font-size: 16px">@item.Name</strong>
-                    }
-                    else
-                    {
-                        <strong style="font-size: 16px">@item.Name.Substring(0, 40)...</strong>
-                    }
-                </div>
-                <div class="panel-body">
-                    <img src="@item.Hinh" width="100%" />
-                    <div style="margin-top:10px"><strong style="font-size: 18px">Giá: </strong> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+            <a href="/home/detail/@item.Id" class="ShowSP">
+                <div class="panel panel-default">
+                    <div class="panel-body">
 
-                </div>
-                <div class="panel-footer clearfix">
-                    <div class="pull-right">
-                        @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
-                        {
-                            <input type="hidden" name="soLuong" value="1" required" />
-                            <input type="hidden" value="@item.Id" name="idpro" required />
-                            <input type="submit" value="Add to card" class="btn btn-success" />
-                            @Html.ActionLink("Đọc thêm...", "Detail", new
-                           {
-                               id = item.Id
-                           }, new { @class = "btn btn-default" })
-                        }
+                        <img src="@item.Hinh" width="100%" style="margin-bottom:15px" />
+                        <div style="height:45px">
+                            @if (item.Name.Length < 40)
+                            {
+                                <strong style="font-size: 16px;color :#333333">@item.Name</strong>
+                            }
+                            else
+                            {
+                                <strong style="font-size: 16px;color :#333333">@item.Name.Substring(0, 40)...</strong>
+                            }
+                        </div>
+                        <div style="margin-top:10px"> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
                     </div>
                 </div>
-            </div>
+            </a>
+
         </div>
+
     }
 </div>
 <div>
