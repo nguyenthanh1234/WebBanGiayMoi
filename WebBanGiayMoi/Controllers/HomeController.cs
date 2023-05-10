@@ -83,7 +83,7 @@ namespace WebBanGiayMoi.Controllers
         {
             if (page == null) page = 1;
 
-            var topic = db.blog.Where(s => s.TopicID == 2).ToList();
+            var topic = db.blog.Where(s => s.TopicID == 2).ToList().OrderByDescending(s => s.ID);
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             if (topic == null)
@@ -96,7 +96,7 @@ namespace WebBanGiayMoi.Controllers
         {
             if (page == null) page = 1;
 
-            var topic = db.blog.Where(s => s.TopicID == 3).ToList();
+            var topic = db.blog.Where(s => s.TopicID == 3).ToList().OrderByDescending(s => s.ID);
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             if (topic == null)
@@ -109,7 +109,7 @@ namespace WebBanGiayMoi.Controllers
         {
             if (page == null) page = 1;
 
-            var topic = db.blog.Where(s => s.TopicID == 4).ToList();
+            var topic = db.blog.Where(s => s.TopicID == 4).ToList().OrderByDescending(s => s.ID);
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             if (topic == null)
