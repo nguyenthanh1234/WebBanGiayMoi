@@ -226,6 +226,30 @@
     <Compile Include="Migrations\202305062043163_themsize2.designer.cs">
       <DependentUpon>202305062043163_themsize2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305121153342_thembangsize.cs" />
+    <Compile Include="Migrations\202305121153342_thembangsize.designer.cs">
+      <DependentUpon>202305121153342_thembangsize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121156336_thembangsize1.cs" />
+    <Compile Include="Migrations\202305121156336_thembangsize1.designer.cs">
+      <DependentUpon>202305121156336_thembangsize1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121207564_themkhoangoai.cs" />
+    <Compile Include="Migrations\202305121207564_themkhoangoai.designer.cs">
+      <DependentUpon>202305121207564_themkhoangoai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121233014_xoanull.cs" />
+    <Compile Include="Migrations\202305121233014_xoanull.designer.cs">
+      <DependentUpon>202305121233014_xoanull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121252074_thembangsizedetail.cs" />
+    <Compile Include="Migrations\202305121252074_thembangsizedetail.designer.cs">
+      <DependentUpon>202305121252074_thembangsizedetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121330552_xoabang.cs" />
+    <Compile Include="Migrations\202305121330552_xoabang.designer.cs">
+      <DependentUpon>202305121330552_xoabang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -284,6 +308,11 @@
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Camnang.cshtml" />
+    <Content Include="Areas\Admin\Views\Sizes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Sizes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Sizes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Sizes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Sizes\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -395,6 +424,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305062043163_themsize2.resx">
       <DependentUpon>202305062043163_themsize2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121153342_thembangsize.resx">
+      <DependentUpon>202305121153342_thembangsize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121156336_thembangsize1.resx">
+      <DependentUpon>202305121156336_thembangsize1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121207564_themkhoangoai.resx">
+      <DependentUpon>202305121207564_themkhoangoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121233014_xoanull.resx">
+      <DependentUpon>202305121233014_xoanull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121252074_thembangsizedetail.resx">
+      <DependentUpon>202305121252074_thembangsizedetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121330552_xoabang.resx">
+      <DependentUpon>202305121330552_xoabang.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

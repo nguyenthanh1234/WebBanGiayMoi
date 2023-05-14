@@ -27,13 +27,41 @@ namespace WebBanGiayMoi.Controllers
             return View(db.Giays.ToList().OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
             
         }
-        public ActionResult SanPham(int? page, string searchString)
+        public ActionResult SanPham(int? page, string searchString,string sortOrder )
         {
-            ViewBag.Keyword = searchString;
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CurrentFilter = searchString;
+
+            var giay = from s in db.Giays
+                       select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                giay = giay.Where(s => s.Name.Contains(searchString));
+            }
+           
+            switch (sortOrder)
+            {
+                case "gia":
+                    giay = giay.OrderBy(s => s.Gia);
+                    break;
+                case "gia_desc":
+                    giay = giay.OrderByDescending(s => s.Gia);
+                    break;
+                case "thutu_desc":
+                    giay = giay.OrderByDescending(s => s.Id);
+                    break;
+                case "thutu":
+                    giay = giay.OrderBy(s => s.Id);
+                    break;
+                default:
+                    giay = giay.OrderBy(s => s.Id);
+                    break;
+            }
+            //ViewBag.Keyword = searchString;
             if (page == null)
                 page = 1;
             int pageSize = 8;
-            return View(Giay.GetAll(searchString).ToPagedList(page.Value, pageSize));
+            return View(giay.ToPagedList(page.Value, pageSize));
         }
         public ActionResult About()
         {

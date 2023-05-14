@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using WebBanGiayMoi.Models;
 
 namespace WebBanGiayMoi.Areas.Admin.Controllers
@@ -15,12 +16,13 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/Home
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string searchString)
         {
+            ViewBag.Keyword = searchString;
             if (page == null)
                 page = 1;
             int pageSize = 50;
-            return View(db.Giays.ToList().OrderByDescending(s => s.Id).ToPagedList(page.Value, pageSize));
+            return View(Giay.GetAll(searchString).OrderByDescending(s => s.Id).ToPagedList(page.Value, pageSize));
         }
 
         // GET: Giays/Details/5
@@ -41,6 +43,7 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         // GET: Admin/Giays/Create
         public ActionResult Create()
         {
+
             ViewBag.BrandId = new SelectList(db.Brands, "Id", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();

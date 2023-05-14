@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.Hierarchy;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Ajax.Utilities;

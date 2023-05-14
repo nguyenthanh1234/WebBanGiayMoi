@@ -9,24 +9,49 @@
         color: transparent !important;
     }
 </style>
+
 <h2 style="margin-bottom:-20px">@ViewBag.Title</h2>
 <!--Tìm kiếm-->
-@using (Html.BeginForm("SanPham", "Home", FormMethod.Get, new { @class = "form-inline" }))
-{
-    <div class="form-group form-inline" style="display: flex; margin-top:30px">
-        <input type="Text" class="form-control col-md-10" value="@ViewBag.Keyword"
-               name="searchString" placeholder="Nhập tên giày cần tìm">
+<div>
+    @using (Html.BeginForm("SanPham", "Home", FormMethod.Get, new { @class = "form-inline  btn-group" }))
+    {
+        <div class="form-group form-inline" style="display: flex; margin-top:30px">
+            <input type="Text" class="form-control col-md-10" value="@ViewBag.CurrentFilter "
+                   name="searchString" placeholder="Nhập tên giày cần tìm">
 
-        <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left: 10px; background: #f57224; border: 1px solid #f57224 ">
-    </div>
-    <br>
-}
-<!--Kết thúc - tìm kiếm-->
+            <input type="submit" class="btn btn-info" value="Tìm Giày" style="margin-left: 10px; background: #f57224; border: 1px solid #f57224 ">
+        </div>
+        <br>
+    }
+    <!--Kết thúc - tìm kiếm-->
+    <!--Sắp xếp-->
+        <div class="dropdown btn-group pull-right" style=" margin-top: 30px">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Giá
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Cao đến thấp", "SanPham", new { sortOrder = "gia_desc" })</li>
+                <li>@Html.ActionLink("Thấp đến cao", "SanPham", new { sortOrder = "gia" })</li>
+            </ul>
+        </div>
+        <div class="dropdown btn-group pull-right " style=" margin-top: 30px;margin-right:5px">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Thứ tự
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Mới đến cũ", "SanPham", new { sortOrder = "thutu_desc" })</li>
+                <li>@Html.ActionLink("Cũ đến mới", "SanPham", new { sortOrder = "thutu" })</li>
+            </ul>
+        </div>
+</div>
+<!--End-sắp xếp-->
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="/home/detail/@item.Id"  class="ShowSP">
+            <a href="/home/detail/@item.Id" class="ShowSP">
                 <div class="panel panel-default">
                     <div class="panel-body">
 
@@ -56,7 +81,7 @@
         Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /@Model.PageCount
     </div>
     <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("sanpham", new { page = page , searchString = @ViewBag.Keyword}))
+        @Html.PagedListPager(Model, page => Url.Action("sanpham", new { page = page, sortOrder = ViewBag.CurrentSort, searchString = @ViewBag.CurrentFilter }))
     </div>
 </div>
 <style>
