@@ -16,10 +16,13 @@ namespace WebBanGiayMoi.Models
     {
         [Display(Name = "Tên khách hàng")]
         [Required]
+
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Số điện thoại")]
         public string Phone { get; set; }
         [Required]
+        [Display(Name="Địa chỉ")]
         public string Address { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

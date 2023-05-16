@@ -87,9 +87,16 @@ namespace WebBanGiayMoi.Models
         }
 
         //Xoa san pham ra khoi danh sach
-        public void Remove_CartItem(int id)
+        public void Remove_CartItem(int id, int size)
         {
-            items.RemoveAll(s => s._shopping_product.Id == id);
+
+            foreach (var itemKS in Items.ToList())
+            {
+                if (itemKS._shopping_size == size && itemKS._shopping_product.Id == id)
+                {
+                    items.RemoveAll(s => s._shopping_product.Id == id && s._shopping_size == size);
+                }
+            }          
         }
 
         //Hiển thị số lượng trên icon, tỉnh tổng danh sách

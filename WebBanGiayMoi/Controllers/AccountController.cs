@@ -238,7 +238,7 @@ namespace WebBanGiayMoi.Controllers
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    SendMail.SendEmail(user.Email, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>", "");
+                    SendMail.SendEmail(user.Email, "Xác nhận tài khoản của bạn", "Xin vui lòng xác nhận tài khoản của bạn bằng cách nhấn vào đường dẫn này: \"" + callbackUrl + "\"", "");
                     return View("NotificationEmailConfirm");
                     //return RedirectToAction("Index", "Home");
                 }
@@ -291,7 +291,7 @@ namespace WebBanGiayMoi.Controllers
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                SendMail.SendEmail(user.Email, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>", "");
+                SendMail.SendEmail(user.Email, "Đặt lại mật khẩu", "Xin vui lòng đặt lại mật khẩu của bạn bằng cách nhấn vào đường dẫn này: \"" + callbackUrl + "\"", "");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 

@@ -68,10 +68,10 @@ namespace WebBanGiayMoi.Controllers
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
-        public ActionResult RemoveCart(int id)
+        public ActionResult RemoveCart(FormCollection form)
         {
             Cart cart = Session["Cart"] as Cart;
-            cart.Remove_CartItem(id);
+            cart.Remove_CartItem(int.Parse(form["Id_Product"]), int.Parse(form["Size"]));
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
 

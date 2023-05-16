@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "MyProfile";
+    ViewBag.Title = "Thông tin của tôi";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var user = Session["Profile"] as WebBanGiayMoi.Models.ApplicationUser;
 }
@@ -24,7 +24,7 @@
         </tr>
     </tbody>
 </table>
-@Html.ActionLink("Edit", "EditProfile")
+@Html.ActionLink("Chỉnh sửa", "EditProfile")
 <img style="margin-top:30px;text-align:center" src="~/Content/images/logoweb.png" width="100%" />
 
 

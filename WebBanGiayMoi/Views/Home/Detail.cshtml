@@ -1,7 +1,7 @@
 ﻿@model WebBanGiayMoi.Models.Giay
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -30,7 +30,7 @@
             @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
             {
                 int id = Model.Id;
-                    <strong style="font-size:14px">Size: </strong>
+                    <strong style="font-size:14px">Kích cỡ: </strong>
                     <input type="radio" name="size" value="35" required>
                     <label>35 </label>
                     <input type="radio" name="size" value="36">

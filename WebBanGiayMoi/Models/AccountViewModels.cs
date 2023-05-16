@@ -64,17 +64,17 @@ namespace WebBanGiayMoi.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Nhớ tài khoản?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "Họ và tên")]
         public string Name { get; set; }
 
         [Required]
@@ -82,21 +82,21 @@ namespace WebBanGiayMoi.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
         [Required]
-        [Display(Name = "Phone")]
+        [Display(Name = "Số điện thoại")]
         public string Phone { get; set; }
 
         [Required]
-        [Display(Name = "Address")]
+        [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Nhập lại mật khẩu")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
