@@ -5,7 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Tin Tức</h2>
+@using (Html.BeginForm("News", "Home", FormMethod.Get, new { @class = "form-inline  btn-group" }))
+{
+    <div class="form-group form-inline" style="display: flex; margin-top:70px">
+        <input type="Text" class="form-control col-md-10" value="@ViewBag.CurrentFilter "
+               name="searchString" placeholder="Nhập nội dung cần tìm">
 
+        <input type="submit" class="btn btn-info" value="Tìm" style="margin-left: 10px; background: #f57224; border: 1px solid #f57224 ">
+    </div>
+    <br>
+}
 <div class="row">
     @foreach (var item in Model)
     {
@@ -52,7 +61,7 @@
         @Model.PageCount
     </div>
     <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("News", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("News", new { page = page, searchString = @ViewBag.CurrentFilter }))
     </div>
 </div>
 <style>

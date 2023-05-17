@@ -184,6 +184,7 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderDetailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TopicsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -263,6 +264,9 @@
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\VNPAY\PayCompare.cs" />
+    <Compile Include="Models\VNPAY\PayLib.cs" />
+    <Compile Include="Models\VNPAY\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -308,11 +312,11 @@
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Camnang.cshtml" />
-    <Content Include="Areas\Admin\Views\Sizes\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Sizes\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Sizes\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Sizes\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Sizes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Topics\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Topics\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Topics\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Topics\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Topics\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
