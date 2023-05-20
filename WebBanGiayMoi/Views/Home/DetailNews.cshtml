@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row" style="margin-top:30px">
+<div class="row">
     <h1>@Html.DisplayFor(model => model.Title)</h1>
 
     <div class="thumbnail" style="border:none">
@@ -13,7 +13,4 @@
     </div>
 
     <p> @Html.Raw(Model.Content)</p>
-
-    @Html.ActionLink("Trở lại", "News", "", new { @class = "btn btn-info" })
-    </p>
 </div>

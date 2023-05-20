@@ -93,12 +93,19 @@ namespace WebBanGiayMoi.Controllers
             var orderDetails = db.OrderDetails.Include(o => o.Giay).Include(o => o.Order);
             return View(orderDetails.OrderByDescending(s => s.Id).ToList());
         }
-        public ActionResult News(int? page)
+        public ActionResult News(int? page, string searchString)
         {
+            ViewBag.CurrentFilter = searchString;
+            var baiViet = from s in db.blog
+                       select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                baiViet = baiViet.Where(s => s.Title.Contains(searchString));
+            }
             if (page == null)
                 page = 1;
             int pageSize = 8;
-            return View(db.blog.ToList().OrderByDescending(x => x.ID).ToPagedList(page.Value, pageSize));
+            return View(baiViet.OrderByDescending(x => x.ID).ToPagedList(page.Value, pageSize));
         }
         public ActionResult DetailNews(int id)
         {

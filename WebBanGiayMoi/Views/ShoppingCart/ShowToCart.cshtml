@@ -82,23 +82,19 @@
                 <td colspan="3" style="text-align:left;font-size: 16px">@user.Address</td>
                 <td style="text-align:right;font-size: 16px">@Html.ActionLink("Sửa", "EditProfile", "Account")</td>
             </tr>
-            @using (Html.BeginForm("CheckOut", "ShoppingCart"))
-            {
-                <tr>
+            <tr>
+                <td colspan="7" style="text-align: right; border-top: none"><a href="/shoppingcart/CheckOut"><img src="~/Content/images/tt-tm.png" width="320"/></a></td>
+            </tr>
+            <tr>
+                <td colspan="7" style="text-align: right; border-top: none"><a href="/shoppingcart/Payment"><img src="~/Content/images/vnpay-thanh-toan.png" width="320" /></a></td>
+            </tr>
+            <tr>
+                <td colspan="7" style="text-align: right; border-top: none"><a href="/shoppingcart/PaymentWithPaypal"><img src="~/Content/images/mua-hang-paypal.png" width="320" /></a></td>
+            </tr>
 
-                    <td colspan="7" style="text-align:right; font-size:18px; border-top:none">
-                        <input type="submit" value="Thanh toán khi nhận hàng" class="btn btn-success" />
-                    </td>
-                </tr>
-            }
-                <tr>
-                    <td colspan="7" style="text-align: right; border-top: none"><a class="btn btn-danger" href="/shoppingcart/Payment">Thanh toán với VNPAY</a></td>
-                </tr>
-                <tr>
-                    <td colspan="7" style="text-align: right; border-top: none"><a href="/shoppingcart/PaymentWithPaypal"><img src="~/Content/images/paypal-button.png" width="187" /></a></td>
-                </tr>
 
-          
+
+
         </tfoot>
     </table>
     <a href="/home/index" class="btn btn-primary">Tiếp tục mua sắm</a>
