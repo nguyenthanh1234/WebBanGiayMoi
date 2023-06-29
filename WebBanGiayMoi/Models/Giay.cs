@@ -20,6 +20,7 @@ namespace WebBanGiayMoi.Models
         public double Gia { get; set; }
         [Display(Name = "Ảnh đại diện")]
         public string Hinh { get; set; }
+
         [Display(Name = "Nội dung")]
         public string Content { get; set; }
         public Category Category { get; set; }

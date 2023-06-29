@@ -55,7 +55,7 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Gia,Hinh,Content,CategoryId,BrandId")] Giay giay)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Gia,SoLuong,Hinh,Content,CategoryId,BrandId")] Giay giay)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace WebBanGiayMoi.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Gia,Hinh,Content,CategoryId,BrandId")] Giay giay)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Gia,SoLuong,Hinh,Content,CategoryId,BrandId")] Giay giay)
         {
             if (ModelState.IsValid)
             {

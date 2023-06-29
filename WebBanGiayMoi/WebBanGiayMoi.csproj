@@ -251,6 +251,18 @@
     <Compile Include="Migrations\202305121330552_xoabang.designer.cs">
       <DependentUpon>202305121330552_xoabang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305250009335_themcotsoluong.cs" />
+    <Compile Include="Migrations\202305250009335_themcotsoluong.designer.cs">
+      <DependentUpon>202305250009335_themcotsoluong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305250033546_themcotsoluong212.cs" />
+    <Compile Include="Migrations\202305250033546_themcotsoluong212.designer.cs">
+      <DependentUpon>202305250033546_themcotsoluong212.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305250134440_xoasoluong.cs" />
+    <Compile Include="Migrations\202305250134440_xoasoluong.designer.cs">
+      <DependentUpon>202305250134440_xoasoluong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -446,6 +458,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305121330552_xoabang.resx">
       <DependentUpon>202305121330552_xoabang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305250009335_themcotsoluong.resx">
+      <DependentUpon>202305250009335_themcotsoluong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305250033546_themcotsoluong212.resx">
+      <DependentUpon>202305250033546_themcotsoluong212.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305250134440_xoasoluong.resx">
+      <DependentUpon>202305250134440_xoasoluong.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,7 @@ using WebBanGiayMoi.Models;
 
 namespace WebBanGiayMoi.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TopicsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
