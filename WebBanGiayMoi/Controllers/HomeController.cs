@@ -93,19 +93,38 @@ namespace WebBanGiayMoi.Controllers
             var orderDetails = db.OrderDetails.Include(o => o.Giay).Include(o => o.Order);
             return View(orderDetails.OrderByDescending(s => s.Id).ToList());
         }
-        public ActionResult News(int? page, string searchString)
+        public ActionResult News(int? page, string currentFilter, string searchString)
         {
-            ViewBag.CurrentFilter = searchString;
-            var baiViet = from s in db.blog
-                       select s;
-            if (!String.IsNullOrEmpty(searchString))
+            var ls = new List<News>();
+            if (searchString != null)
             {
-                baiViet = baiViet.Where(s => s.Title.Contains(searchString));
-            }
-            if (page == null)
                 page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                ls = db.blog.Where(s => s.Title.Contains(searchString)).ToList();
+            }
+            else
+            {
+                ls = db.blog.ToList();
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (page == null)
+            {
+                page = 1;
+            }
             int pageSize = 8;
-            return View(baiViet.OrderByDescending(x => x.ID).ToPagedList(page.Value, pageSize));
+
+            int pageNumber = (page ?? 1);
+            ls = ls.OrderByDescending(s => s.ID).ToList();
+            return View(ls.ToPagedList(pageNumber, pageSize));
+
         }
         public ActionResult DetailNews(int id)
         {
