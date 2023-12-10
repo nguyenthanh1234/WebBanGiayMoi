@@ -89,7 +89,7 @@ namespace WebBanGiayMoi.Controllers
 
             return View();
         }
-
+        //hello
         public async Task<ActionResult> Detail(int id)
         {
             List<string> sanPhamGoiY = new List<string>();
