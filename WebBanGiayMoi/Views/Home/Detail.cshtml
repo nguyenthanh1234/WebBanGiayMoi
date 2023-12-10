@@ -2,9 +2,15 @@
 
 @{
     ViewBag.Title = "Chi tiết sản phẩm";
+    IEnumerable<WebBanGiayMoi.Models.Giay> tatcasp = ViewBag.tatcasanpham as IEnumerable<WebBanGiayMoi.Models.Giay>;
+    IEnumerable<string> sanPhamGoiY = ViewBag.HienThiSanPhamGoiY as IEnumerable<string>;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    a.ShowSP:hover {
+        color: transparent !important;
+    }
+</style>
 <div class="row" style="margin-top:30px">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="thumbnail">
@@ -59,4 +65,43 @@
         </div>
     </div>
 </div>
+<!--Chi tiết sản phẩm-->
+@*@Html.Raw(Model.Content)*@
+<!--Kết thúc - Chi tiết sản phẩm-->
+<!--Gợi ý sản phẩm-->
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Gợi ý cho bạn</b></u></h3>
+<div class="row">
+    @foreach (var item in tatcasp)
+    {
+        foreach (var itemgoiy in sanPhamGoiY)
+        {
+            if (string.Compare(item.Name, itemgoiy) == 0)
+            {
 
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <a href="/home/detail/@item.Id" class="ShowSP">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                                <img src="@item.Hinh" width="100%" style="margin-bottom:15px" />
+                                <div style="height:45px">
+                                    @if (item.Name.Length < 40)
+                                    {
+                                        <strong style="font-size: 16px;color :#333333">@item.Name</strong>
+                                    }
+                                    else
+                                    {
+                                        <strong style="font-size: 16px;color :#333333">@item.Name.Substring(0, 40)...</strong>
+                                    }
+                                </div>
+                                <div style="margin-top:25px"> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            }
+        }
+    }
+</div>
+<!--End - Gợi ý sản phẩm-->

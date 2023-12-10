@@ -2,15 +2,20 @@
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using WebBanGiayMoi.Models;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace WebBanGiayMoi.Controllers
 {
@@ -18,15 +23,23 @@ namespace WebBanGiayMoi.Controllers
     public class HomeController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        string baseURL = "http://localhost:5000/";
+
         public ActionResult Index(int? page)
         {
+            var sanPhamBanChayId = db.OrderDetails.GroupBy(od => od.GiayId).Select(g => new { GiayId = g.Key, TongSoLanXuatHien = g.Count() }).OrderByDescending(x => x.TongSoLanXuatHien).Take(4).Select(x => x.GiayId).ToList();
+            var sanPhamBanChay = db.Giays.Where(g => sanPhamBanChayId.Contains(g.Id)).ToList();
+            ViewBag.sanPhamBC = sanPhamBanChay;
             if (page == null)
                 page = 1;
             int pageSize = 8;
             ViewBag.HienThiBaiViet = db.blog.ToList().OrderByDescending(m => m.ID).ToPagedList(1, 4);
+            //ViewBag.HienThiSanPhamGoiY = Session["sanphamgoiycuatoi"] as List<string>;
             return View(db.Giays.ToList().OrderByDescending(m => m.Id).ToPagedList(page.Value, pageSize));
             
         }
+
+     
         public ActionResult SanPham(int? page, string searchString,string sortOrder )
         {
             ViewBag.CurrentSort = sortOrder;
@@ -77,9 +90,35 @@ namespace WebBanGiayMoi.Controllers
             return View();
         }
 
-        public ActionResult Detail(int id)
+        public async Task<ActionResult> Detail(int id)
         {
+            List<string> sanPhamGoiY = new List<string>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseURL);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                HttpResponseMessage getData = await client.GetAsync($"api?id={id}");
+
+                if (getData.IsSuccessStatusCode)
+                {
+                    string results = getData.Content.ReadAsStringAsync().Result;
+                    //string results = await getData.Content.ReadAsStringAsync();
+                    var productResponse = JsonConvert.DeserializeObject<ProductResponse>(results);
+
+                    sanPhamGoiY = productResponse.SanPhamGoiY;
+                    ViewBag.HienThiSanPhamGoiY = sanPhamGoiY;
+ 
+                    
+                   
+                }
+                else
+                {
+                    Console.WriteLine("Error calling web API");
+                }
+            }
+            ViewBag.tatcasanpham = db.Giays.ToList();
             Giay vitri = db.Giays.Include(o => o.Category).Include(o => o.Brand).ToList().Find(x => x.Id == id);
 
             return View(vitri);

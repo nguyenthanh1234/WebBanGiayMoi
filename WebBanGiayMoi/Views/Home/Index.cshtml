@@ -2,8 +2,11 @@
 @model PagedList.IPagedList<WebBanGiayMoi.Models.Giay>
 @{
     ViewBag.Title = "Home Page";
+    IEnumerable<WebBanGiayMoi.Models.Giay> sanphambc = ViewBag.sanPhamBC as IEnumerable<WebBanGiayMoi.Models.Giay>;
     IEnumerable<WebBanGiayMoi.Models.News> baiviet = ViewBag.HienThiBaiViet as IEnumerable<WebBanGiayMoi.Models.News>;
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 <style>
     a.ShowSP:hover {
@@ -14,13 +17,14 @@
 <div class="row">
     @*<img src="~/Content/images/banner2.jpg" width="100%" />*@
     <div id="MMqLrAhy2oN">
-    <script type="text/javascript" async data-short="MMqLrAhy2oN" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>
+        <script type="text/javascript" async data-short="MMqLrAhy2oN" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script>
+    </div>
 </div>
 <!--End - Banner-->
 <!--Danh mục sản phẩm-->
 <h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Thương hiệu</b></u></h3>
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:15px">
             <a href="~/home/adidas">  <img src="~/Content/images/brand-1.png" alt="Anh-Thuong-Hieu" width="100%" /></a>
         </div>
@@ -38,8 +42,40 @@
     </div>
 </div>
 <!--End - Danh mục sản phẩm-->
+<!--Sản phẩm bán chạy-->>
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Sản phẩm bán chạy</b></u></h3>
+<div class="row">
+        @foreach (var item in sanphambc)
+        {
+
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <a href="/home/detail/@item.Id" class="ShowSP">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                                <img src="@item.Hinh" width="100%" style="margin-bottom:15px" />
+                                <div style="height:45px">
+                                    @if (item.Name.Length < 40)
+                                    {
+                                        <strong style="font-size: 16px;color :#333333">@item.Name</strong>
+                                    }
+                                    else
+                                    {
+                                        <strong style="font-size: 16px;color :#333333">@item.Name.Substring(0, 40)...</strong>
+                                    }
+                                </div>
+                                <div style="margin-top:25px"> <b style="font-size: 18px; color: #f57224">@item.Gia.ToString("#,##0 VND")</b></div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+    }
+</div>
+<!--Kết thúc - Sản phẩm bán chạy-->
 <!--Sản phẩm-->
-<h3 style="margin-bottom:30px;margin-top:20px;text-align:center"><u><b>Hàng mới về</b></u></h3>
+<h3 style="margin-bottom:30px;margin-top:40px;text-align:center"><u><b>Hàng mới về</b></u></h3>
 <div class="row">
     @foreach (var item in Model)
     {
@@ -131,9 +167,9 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
             <div class="panel panel-default" style="height:356px">
                 <div class="panel-body">
-                 
-                        <img src="@item.Image" width="100%" height="130" style="margin-bottom: 15px" />
-               
+
+                    <img src="@item.Image" width="100%" height="130" style="margin-bottom: 15px" />
+
                     <div style="margin-bottom:5px">
                         @if (item.Title.Length < 40)
                         {
