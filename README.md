@@ -1,19 +1,17 @@
 # WebBanGiayMoi
-Thành viên: Thanh, đức, quý
+Thành viên: Thanh, quý
 
 Xậy dựng website bán giày.
 _______
-+ Đăng nhập/đăng ký
-+ Xác thực bằng gmail, quên mật khẩu
-+ Thêm giày mới
-+ Phần quyền/ xác thực
++ Tích hợp hệ thống gợi ý sản phẩm Recommender System
++ Thanh toán tiền mặt, online (VNPAY và Paypal)
++ Hỗ trợ tính năng chatOnline
++ Đăng nhập/đăng ký bằng gmail, google
++ uên mật khẩu, đổi mật khẩu
++ Thêm, xóa, sửa sản phẩm
++ Thêm, xóa, sửa bài viết
++ Phần quyền, xác thực
 + Thêm giỏ hàng
-+ Thanh toán
-+ Thông tin khách hàng
-+ Edit thông tin khách hàng
++ Xem thông tin người dùng
 + Xem hóa đơn
-+ Quản lý sản phẩm
-+ Quản lý đơn hàng
-+ Quản lý danh mục
-+ Quản lý thương hiệu
-+ Quản lý bài viết
++ Trang quản trị (QL sản phẩm, danh mục, thương hiệu, hóa đơn,...)
